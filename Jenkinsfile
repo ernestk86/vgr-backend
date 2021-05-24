@@ -12,7 +12,7 @@ pipeline {
 
         stage('Github Handoff for Build') {
             steps {
-                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN\" https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches'
+                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN\" https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches -d \'{\"ref\":\"main\"}\''
             }
         }
         
