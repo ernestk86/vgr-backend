@@ -20,7 +20,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<sonar.projectKey>vgr-backend</sonar.projectKey>
-		<!--sonar.organization>210201sre</sonar.organization -->
+		<sonar.organization>ernestk86</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
 		<sonar.coverage.jacoco.xmlReportPaths>target/coverage-reports/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
