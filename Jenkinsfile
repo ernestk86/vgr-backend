@@ -12,7 +12,7 @@ pipeline {
         
         stage('Quality Gates') {
             steps {
-                sh 'echo testing'
+                sh 'echo testing2'
             }
         }
         
