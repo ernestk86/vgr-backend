@@ -4,17 +4,17 @@ pipeline {
         maven 'Maven'    
     }
     stages {
-        // stage('Clean') {
-        //     steps {
-        //         sh 'mvn clean'
-        //     }
-        // }
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
 
-        // stage('Build Jar File') {
-        //     steps {
-        //         sh 'mvn package'
-        //     }
-        // }
+        stage('Github Handoff for Build') {
+            steps {
+                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN\" https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches'
+            }
+        }
         
         // stage('Quality Gates') {
         //     steps {
