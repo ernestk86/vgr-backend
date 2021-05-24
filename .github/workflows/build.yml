@@ -11,7 +11,7 @@ jobs:
           java-version: 11
       - name: Build with Maven
         run: | 
-          cd ./$PROJECT_ROOT
+          cd ..
           mvn package
       - name: Sonar Quality Check
         run: |
