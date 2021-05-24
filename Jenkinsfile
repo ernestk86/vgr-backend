@@ -12,7 +12,7 @@ pipeline {
         
         stage('Quality Gates') {
             steps {
-                sh 'echo sonarcheck'
+                sh 'echo testing'
             }
         }
         
