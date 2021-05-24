@@ -20,7 +20,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<sonar.projectKey>vgr-backend</sonar.projectKey>
-		<!--sonar.organization>210201sre</sonar.organization-->
+		<!--sonar.organization>210201sre</sonar.organization -->
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
 		<sonar.coverage.jacoco.xmlReportPaths>target/coverage-reports/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
@@ -144,8 +144,8 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			
-						<plugin>
+
+			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.7.0.1746</version>
