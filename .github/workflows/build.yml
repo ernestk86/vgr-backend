@@ -1,0 +1,17 @@
+name: BUILD
+on:
+  workflow_dispatch:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Maven Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build with Maven
+        run: | 
+          mvn package
+      - name: Sonar Quality Check
+        run: |
+          mvn sonar:sonar -Dsonar.login=a2363573af11a80d894023cbcc0a6c76916017dc 
