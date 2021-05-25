@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.vgrental.models.Game;
@@ -24,10 +25,30 @@ import com.vgrental.repositories.GameDAO;
 import com.vgrental.repositories.RentalDAO;
 import com.vgrental.repositories.UserDAO;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+
 @Service
 public class RentalService {
 	
 	private static final Logger log = LoggerFactory.getLogger(RentalService.class);
+	private MeterRegistry meterRegistry;
+	private Counter failedConnectionAttempts;
+	private Counter successfulConnectionAttempts;
+	private Counter emailSent;
+	private static final String CONNECTIONATTEMPT = "connection_attempt";
+	private static final String TYPE = "type";
+	private static final String SUCCESS = "success";
+	private static final String FAIL = "fail";
+	private static final String EMAIL = "email";
+	private static final String SENT = "sent";
+	
+	public RentalService (MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+        successfulConnectionAttempts = meterRegistry.counter(CONNECTIONATTEMPT, TYPE, SUCCESS);
+		failedConnectionAttempts = meterRegistry.counter(CONNECTIONATTEMPT, TYPE, FAIL);
+		emailSent = meterRegistry.counter(EMAIL, TYPE, SENT);
+    }
 	
 	@Autowired
 	private RentalDAO rentalDAO;
@@ -42,8 +63,17 @@ public class RentalService {
 		MDC.put("userId", Integer.toString(userId));
 		MDC.put("gameId", Integer.toString(gameId));
 		// Find user and game
-		User u = userDAO.findById(userId).orElse(null);
-		Game g = gameDAO.findById(gameId).orElse(null);
+		User u = null;
+		Game g = null;
+		
+		try {
+			u = userDAO.findById(userId).orElse(null);
+			successfulConnectionAttempts.increment(1);
+			g = gameDAO.findById(gameId).orElse(null);	
+			successfulConnectionAttempts.increment(1);
+		} catch (DataAccessException e) {
+			failedConnectionAttempts.increment(1);
+		}
 		
 		if(u == null) {
 			log.error("Unable to find user");
@@ -58,12 +88,23 @@ public class RentalService {
 		// Make sure user and game exists and game is available
 		if(u != null && g != null && g.isAvailable()) {
 			Rental r = new Rental(u, g);
+			Rental newRental = null;
 			g.setAvailable(false);
-			gameDAO.save(g);
+			
+			try {
+				gameDAO.save(g);
+				successfulConnectionAttempts.increment(1);
+				newRental = rentalDAO.save(r);
+				successfulConnectionAttempts.increment(1);
+			} catch (DataAccessException e) {
+				failedConnectionAttempts.increment(1);
+			}
+			
 			MDC.put("insert", r.toString());
 			log.info("New rental inserted");
 			MDC.clear();
-			return rentalDAO.save(r);
+			
+			return newRental;
 		}
 		
 		log.error("Unable to find game");
@@ -75,12 +116,15 @@ public class RentalService {
 		MDC.put("gameId", Integer.toString(gameId));
 		try {
 			rentalDAO.deleteById(gameId);
+			successfulConnectionAttempts.increment(1);
 			log.info("Game has been successfully returned");
 			MDC.clear();
 			Game g = gameDAO.findById(gameId).orElse(null);
+			successfulConnectionAttempts.increment(1);
 			if(g != null) {
 				g.setAvailable(true); // Make game available
 				gameDAO.save(g);
+				successfulConnectionAttempts.increment(1);
 				log.info("Game has been set to available");
 				MDC.clear();
 				return true;
@@ -89,9 +133,10 @@ public class RentalService {
 			log.error("For whatever reason game g is null");
 			MDC.clear();
 			return false;
-		} catch(IllegalArgumentException e) {
+		} catch(DataAccessException e) {
 			log.error("Can't delete a rental for a game that doesn't exist", e);
 			MDC.clear();
+			failedConnectionAttempts.increment(1);
 			return false;
 		}
 	}
@@ -156,6 +201,8 @@ public class RentalService {
 			// Now send the message
 			Transport.send(messageobj);
 			
+			emailSent.increment(1);
+			
 			// Logging
 			log.info("Email successfully sent");
 		} catch (MessagingException exp) {
@@ -165,11 +212,24 @@ public class RentalService {
 	}
 	
 	public Rental toggleOverdue(int gameId) {
-		Rental r = rentalDAO.findById(gameId).orElse(null);
+		Rental r = null;
+		
+		try {
+			r = rentalDAO.findById(gameId).orElse(null);
+			successfulConnectionAttempts.increment(1);
+		} catch (DataAccessException e) {
+			failedConnectionAttempts.increment(1);
+		}
 		
 		if(r != null) {
 			r.setOverDue(!r.isOverDue());
-			rentalDAO.save(r);
+			
+			try {
+				rentalDAO.save(r);
+				successfulConnectionAttempts.increment(1);
+			} catch (DataAccessException e) {
+				failedConnectionAttempts.increment(1);
+			}
 			
 			if(r.isOverDue()) {
 				MDC.put("overdue", Integer.toString(gameId));
@@ -186,11 +246,25 @@ public class RentalService {
 	}
 	
 	public Rental changeDate(int gameId, LocalDate date) {
-		Rental r = rentalDAO.findById(gameId).orElse(null);
+		Rental r = null;
 		
+		try {
+			r = rentalDAO.findById(gameId).orElse(null);
+			successfulConnectionAttempts.increment(1);
+		} catch (DataAccessException e) {
+			failedConnectionAttempts.increment(1);
+		}		
+			
 		if(r != null) {
 			r.setDueDate(date);
-			rentalDAO.save(r);
+			
+			try {
+				rentalDAO.save(r);
+				successfulConnectionAttempts.increment(1);
+			} catch (DataAccessException e) {
+				failedConnectionAttempts.increment(1);
+			}
+			
 			log.info("Rental updated");
 		} else {
 			log.error("Rental doesn't exist");
