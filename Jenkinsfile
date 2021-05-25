@@ -7,7 +7,7 @@ pipeline {
         stage('Clean') {
             steps {
                 //sh 'mvn clean'
-                sh 'echo fakeCleaning'
+                sh 'echo fakeCleaningd'
             }
         }
 
