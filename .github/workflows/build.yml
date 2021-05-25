@@ -14,7 +14,7 @@ jobs:
           java-version: 11
       - name: Build with Maven
         run: |
-          mvn package
+          mvn clean package
       - name: Sonar Quality Check
         run: |
           mvn sonar:sonar -Dsonar.login=a2363573af11a80d894023cbcc0a6c76916017dc 
