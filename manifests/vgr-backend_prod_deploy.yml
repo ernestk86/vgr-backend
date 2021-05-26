@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vgr-backend
+  labels:
+    app: vgr-backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: vgr-backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: vgr-backend
+        track: stable
+    spec:
+      volumes:
+      containers:
+      - name: vgr-backend
+        image: ernestk86/vgr-backend:latest
+        ports:
+        - containerPort: 8880
+        imagePullPolicy: Always
+        env:
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: DB_URL
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: DB_USERNAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: DB_PASSWORD
+        - name: AWS_SES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: AWS_SES_HOST
+        - name: AWS_SES_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: AWS_SES_USERNAME
+        - name: AWS_SES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vgr-backend-creds
+              key: AWS_SES_PASSWORD
