@@ -135,7 +135,7 @@ pipeline {
         failure {
             emailext
                 to: 'ekim86@gmail.com', 
-                subject: 'Final Pipeline Stages Failed'
+                subject: 'Final Pipeline Stages Failed',
                 body: 'Either scaling down the canary, promoting the production, or the healthcheck failed.'
         }
     }
