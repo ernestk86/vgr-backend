@@ -5,7 +5,10 @@ pipeline {
         
         stage('Scale down Canary') {
             steps {
-                sh '''curl --request PUT --url http://127.0.0.1:8080/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header \'content-type: application/json\' 
+                sh '''curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary 
+                    --header \'content-type: application/json\' 
+                    --header \"Authorization: Bearer $K8_ACCESS_TOKEN\"
+                    --insecure
                     --data \'{
                                 \"apiVersion\": \"apps/v1\",
                                 \"kind\": \"Deployment\",

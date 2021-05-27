@@ -17,4 +17,19 @@ jobs:
           mvn clean package
       - name: Sonar Quality Check
         run: |
-          mvn sonar:sonar -Dsonar.login=a2363573af11a80d894023cbcc0a6c76916017dc 
+          mvn sonar:sonar -Dsonar.login=a2363573af11a80d894023cbcc0a6c76916017dc
+      - name: Send mail
+        if: ${{ failure() }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Github Actions job result
+          to: ${{ secrets.MAIL_USERNAME }}
+          from: ${{ secrets.MAIL_USERNAME }}
+          secure: true
+          body: Build job of ${{ github.repository }} completed successfully!
+          reply_to: ${{ secrets.MAIL_USERNAME }}
+          ignore_cert: true
