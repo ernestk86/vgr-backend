@@ -123,16 +123,9 @@ pipeline {
         
         stage('Health Check') {
             steps {
-                script {
-                    try {
-                        String check = sh 'curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\' | grep error'
-                        if (check.length() > 0) {
-                            throw error
-                        }
-                    } catch (error) {
-                        emailext to: 'ekim86@gmail.com', subject: 'vgr-backend Health Check Failed', body: 'Health checked failed for vgr-backend CI/CD Pipeline.'
-                    }
-                }
+                sh 'result=$(curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\')'
+                sh 'grep admin | echo $result'
+                sh 'exit $?'
             }
         }
     }
