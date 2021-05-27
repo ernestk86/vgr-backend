@@ -17,4 +17,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/vgr-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/vgr-backend-canary:latest
+  Handoff_to_Jenkins_Canary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hand off to Jenkins
+        run: |
+          curl -X POST http://${{ secrets.JENKINS_USERNAME }}:${{ secrets.JENKINS_TOKEN }}@ec2-3-133-100-143.us-east-2.compute.amazonaws.com:9090/job/vgr-backend%20Canary%20and%20Load%20Test/build?token=canary
