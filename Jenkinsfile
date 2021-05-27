@@ -116,6 +116,7 @@ pipeline {
             steps {
                 sh 'docker pull ernestk86/vgr-backend-canary:latest'
                 sh 'docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production'
+                sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
                 sh 'docker push ernestk86/vgr-backend:production'
             }
         }
