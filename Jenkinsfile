@@ -1,49 +1,134 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven'    
-    }
+
     stages {
-        stage('Clean') {
-            steps {
-                //sh 'mvn clean'
-                sh 'echo fakeCleaningd'
-            }
-        }
-
-        stage('Github Handoff for Build') {
-            steps {
-                sh 'curl -X POST -H \"Accept: application/vnd.github.v3+json\" -H \"Authorization: Bearer $GITHUB_ACCESS_TOKEN\" https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches -d \'{\"ref\":\"main\"}\''
-            }
-        }
         
-        stage('Build Docker Image') {
+        stage('Scale down Canary') {
             steps {
-                sh 'echo docker_image'
-            }
-        }
-        
-        stage('Canary Deploy') {
-            steps {
-                sh 'echo canary'
+                sh '''curl --request PUT --url http://127.0.0.1:8080/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header \'content-type: application/json\' 
+                    --data \'{
+                                \"apiVersion\": \"apps/v1\",
+                                \"kind\": \"Deployment\",
+                                \"metadata\": {
+                                    \"name\": \"vgr-backend-canary\",
+                                    \"labels\": {
+                                        \"app\": \"vgr-backend-canary\"
+                                    }
+                                },
+                                \"spec\": {
+                                    \"replicas\": 0,
+                                    \"revisionHistoryLimit\": 3,
+                                    \"selector\": {
+                                        \"matchLabels\": {
+                                            \"app\": \"vgr-backend-canary\",
+                                            \"track\": \"stable\"
+                                        }
+                                    },
+                                    \"template\": {
+                                        \"metadata\": {
+                                            \"labels\": {
+                                            \"app\": \"vgr-backend-canary\",
+                                            \"track\": \"stable\"
+                                            }
+                                        },
+                                        \"spec\": {
+                                            \"volumes\": null,
+                                            \"containers\": [
+                                            {
+                                                \"name\": \"vgr-backend-canary\",
+                                                \"image\": \"ernestk86/vgr-backend-canary:latest\",
+                                                \"ports\": [
+                                                    {
+                                                        \"containerPort\": 8885
+                                                    }
+                                                ],
+                                                \"imagePullPolicy\": \"Always\",
+                                                \"env\": [
+                                                    {
+                                                        \"name\": \"DB_URL\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"DB_URL\"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \"name\": \"DB_USERNAME\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"DB_USERNAME\"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \"name\": \"DB_PASSWORD\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"DB_PASSWORD\"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \"name\": \"AWS_SES_HOST\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"AWS_SES_HOST\"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \"name\": \"AWS_SES_USERNAME\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"AWS_SES_USERNAME\"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \"name\": \"AWS_SES_PASSWORD\",
+                                                        \"valueFrom\": {
+                                                        \"secretKeyRef\": {
+                                                            \"name\": \"vgr-backend-creds\",
+                                                            \"key\": \"AWS_SES_PASSWORD\"
+                                                        }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }\''''
+
             }
         }
 
-        stage('Load Test') {
+        stage('Promote image to Production') {
             steps {
-                sh 'echo loadtest'
-            }
-        }
-
-        stage('Production Deploy') {
-            steps {
-                sh 'echo production'
+                sh 'docker pull ernestk86/vgr-backend-canary:latest'
+                sh 'docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production'
+                sh 'docker push ernestk86/vgr-backend:production'
             }
         }
         
         stage('Health Check') {
             steps {
-                sh 'echo health'
+                script {
+                    try {
+                        String check = sh 'curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\' | grep error'
+                        if (check.length() > 0) {
+                            throw error
+                        }
+                    } catch (error) {
+                        emailext to: 'ekim86@gmail.com', subject: 'vgr-backend Health Check Failed', body: 'Health checked failed for vgr-backend CI/CD Pipeline.'
+                    }
+                }
             }
         }
     }

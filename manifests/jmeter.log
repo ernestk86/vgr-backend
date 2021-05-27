@@ -1,0 +1,22 @@
+2021-05-26 13:15:31,668 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-05-26 13:15:31,686 INFO o.a.j.JMeter: Loading user properties from: C:\Users\ernes\scoop\apps\jmeter\current\bin\user.properties
+2021-05-26 13:15:31,687 INFO o.a.j.JMeter: Loading system properties from: C:\Users\ernes\scoop\apps\jmeter\current\bin\system.properties
+2021-05-26 13:15:31,701 INFO o.a.j.JMeter: Copyright (c) 1998-2021 The Apache Software Foundation
+2021-05-26 13:15:31,701 INFO o.a.j.JMeter: Version 5.4.1
+2021-05-26 13:15:31,701 INFO o.a.j.JMeter: java.version=1.8.0_281
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: os.name=Windows 10
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: os.arch=amd64
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: os.version=10.0
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: file.encoding=Cp1252
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: java.awt.headless=null
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: Max memory     =1073741824
+2021-05-26 13:15:31,702 INFO o.a.j.JMeter: Available Processors =8
+2021-05-26 13:15:31,711 INFO o.a.j.JMeter: Default Locale=English (EN)
+2021-05-26 13:15:31,711 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2021-05-26 13:15:31,711 INFO o.a.j.JMeter: JMeterHome=C:\Users\ernes\scoop\apps\jmeter\current
+2021-05-26 13:15:31,712 INFO o.a.j.JMeter: user.dir  =C:\Users\ernes\desktop\ernie_work\vgr-backend\manifests
+2021-05-26 13:15:31,712 INFO o.a.j.JMeter: PWD       =C:\Users\ernes\Desktop\Ernie_Work\vgr-backend\manifests
+2021-05-26 13:15:31,714 INFO o.a.j.JMeter: IP: 172.28.16.1 Name: Ernie-PC FullName: Ernie-PC.mshome.net
+2021-05-26 13:15:31,886 INFO o.a.j.JMeter: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2021-05-26 13:15:33,654 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vgr-backend-canary
+  labels:
+    app: vgr-backend-canary
+spec:
+  selector:
+    app: vgr-backend-canary
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8885
+    targetPort: 8885
