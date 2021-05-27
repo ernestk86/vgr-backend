@@ -20,7 +20,7 @@ spec:
       volumes:
       containers:
       - name: vgr-backend
-        image: ernestk86/vgr-backend:latest
+        image: ernestk86/vgr-backend:production
         ports:
         - containerPort: 8880
         imagePullPolicy: Always
