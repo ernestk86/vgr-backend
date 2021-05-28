@@ -334,6 +334,7 @@ pipeline {
         
         stage('Health Check') {
             steps {
+                sh 'sleep 10'
                 sh 'result=$(curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\')'
                 sh 'grep admin | echo $result'
                 sh 'exit $?'
