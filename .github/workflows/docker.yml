@@ -34,6 +34,7 @@ jobs:
           reply_to: ${{ secrets.MAIL_USERNAME }}
           ignore_cert: true
   Handoff_to_Jenkins_Canary:
+    needs: [Docker_Build_Push]
     runs-on: ubuntu-latest
     steps:
       - name: Hand off to Jenkins
