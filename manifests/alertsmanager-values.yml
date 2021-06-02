@@ -59,8 +59,13 @@ ingress:
   enabled: false
   annotations: {}
   hosts:
-    - host: alertmanager.domain.com
-      paths: []
+    - host: 34.74.246.76
+      paths:
+        - path: /alertmanager/?(.*)
+          backend:
+            serviceName: alertmanager
+            servicePort: 9093
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -105,17 +110,20 @@ persistence:
   size: 50Mi
 
 config:
-  global: {}
-    # slack_api_url: ''
+  global:
+    smtp_smarthost: 'smtp.gmail.com:587'
+    smtp_from: 'ekim86@gmail.com'
+    smtp_auth_username: 'ekim86@gmail.com'
+    smtp_auth_password: 'cdrdzqtpzxvxmnzf'
 
   templates:
     - '/etc/alertmanager/*.tmpl'
 
   receivers:
     - name: default-receiver
-      # slack_configs:
-      #  - channel: '@you'
-      #    send_resolved: true
+      email_configs:
+      - to: 'ekim86@gmail.com'
+        text: 'Critical alert in monitoring system!'
 
   route:
     group_wait: 10s

@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: prometheus-rules
+  namespace: default
+  labels: 
+    app: prometheus
+spec:
+  groups:
+  - name: vgr-backend
+    rules:
+    - alert: pod-down
+      annotations:
+        summary: 'Pod is down'
+        description: 'Pod is now down'        
+        message: 'Check your pods'
+      expr: up{job="vgr-backend"} == 0
+      labels:
+        severity: CRITICAL

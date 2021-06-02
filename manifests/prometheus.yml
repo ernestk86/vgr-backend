@@ -19,12 +19,12 @@ spec:
   serviceAccountName: prometheus
   serviceMonitorSelector: {}
   version: v2.22.1
-  remoteWrite:
-  - url: "https://prometheus-us-central1.grafana.net/api/prom/push"
-    basicAuth:
-      username:
-        name: kubepromsecret
-        key: username
-      password:
-        name: kubepromsecret
-        key: password
+  alerting:
+    alertmanagers:
+    - name: 'alertmanager'
+      namespace: 'default'
+      #pathPrefix: 'http://10.12.7.96'
+      port: 9093
+  ruleSelector:
+    matchLabels:
+      app: 'prometheus'
