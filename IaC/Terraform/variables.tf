@@ -1,7 +1,13 @@
+variable "db_username" {
+  description = "Value of the db username for login"
+  type        = string
+  default     = "ernestk86"
+}
+
 variable "db_password" {
   description = "Value of the db password for login"
   type        = string
-  default     = "password"
+  default     = "newcode1234"
 }
 
 variable "pipeline_server_name" {
