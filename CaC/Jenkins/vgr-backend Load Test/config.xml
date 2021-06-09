@@ -1,0 +1,99 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <jenkins.triggers.ReverseBuildTrigger>
+      <spec></spec>
+      <upstreamProjects>vgr-backend Canary</upstreamProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </jenkins.triggers.ReverseBuildTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jenkinsci.plugins.octoperf.OctoperfBuilder plugin="octoperf@4.3.1">
+      <credentialsId>Octoperf</credentialsId>
+      <workspaceId>2t2ms3kBtsj8ySy3ddDQ</workspaceId>
+      <projectId>od2ms3kBtsj8ySy3rNE_</projectId>
+      <scenarioId>ucWps3kBrOqt3Q0WAa7V</scenarioId>
+      <serverUrl></serverUrl>
+      <stopConditions/>
+    </org.jenkinsci.plugins.octoperf.OctoperfBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.performance.PerformancePublisher plugin="performance@3.19">
+      <errorFailedThreshold>1</errorFailedThreshold>
+      <errorUnstableThreshold>1</errorUnstableThreshold>
+      <errorUnstableResponseTimeThreshold></errorUnstableResponseTimeThreshold>
+      <relativeFailedThresholdPositive>1.0</relativeFailedThresholdPositive>
+      <relativeFailedThresholdNegative>1.0</relativeFailedThresholdNegative>
+      <relativeUnstableThresholdPositive>1.0</relativeUnstableThresholdPositive>
+      <relativeUnstableThresholdNegative>1.0</relativeUnstableThresholdNegative>
+      <nthBuildNumber>0</nthBuildNumber>
+      <configType>ART</configType>
+      <graphType>ART</graphType>
+      <modeOfThreshold>false</modeOfThreshold>
+      <failBuildIfNoResultFile>true</failBuildIfNoResultFile>
+      <compareBuildPrevious>false</compareBuildPrevious>
+      <optionType>ART</optionType>
+      <modePerformancePerTestCase>false</modePerformancePerTestCase>
+      <excludeResponseTime>false</excludeResponseTime>
+      <showTrendGraphs>true</showTrendGraphs>
+      <modeThroughput>false</modeThroughput>
+      <modeEvaluation>false</modeEvaluation>
+      <constraints class="empty-list"/>
+      <ignoreFailedBuilds>false</ignoreFailedBuilds>
+      <ignoreUnstableBuilds>false</ignoreUnstableBuilds>
+      <persistConstraintLog>false</persistConstraintLog>
+      <sourceDataFiles>**/*.log</sourceDataFiles>
+      <filterRegex></filterRegex>
+      <junitOutput></junitOutput>
+      <percentiles>0,50,90,100</percentiles>
+      <baselineBuild>0</baselineBuild>
+    </hudson.plugins.performance.PerformancePublisher>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.83">
+      <recipientList>ekim86@gmail.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>Load test stage failed</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>true</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <from></from>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

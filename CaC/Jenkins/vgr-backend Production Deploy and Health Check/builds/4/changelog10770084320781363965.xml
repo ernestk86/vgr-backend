@@ -1,0 +1,22 @@
+commit 554a951f572d7a94bb71960b46172edc2090ed0c
+tree 389811fef0edd0c47d2aab1c85bfa99a3e9151c1
+parent 0ea77211d0077a771ca32e83b098481d925922b8
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:51:04 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:51:04 -0400
+
+    Fixing Pipeline
+
+
+:100644 100644 cf50b7240eb000570143d72db8f55517fc189fef f1314544a0895d8a92d6683d5ec1dbfc9c49a58e M	.github/workflows/build.yml
+:100644 100644 7447b4237e86770e3c65c3bfcaa38461d9ee3de8 26bc27159876e5073080663529a8a5ec36a51d19 M	.github/workflows/docker.yml
+:100644 100644 67722644fcffc984e4c160860567d9946989718b 8e65283e833672e3e2e6836ccb59dbd6507be643 M	Jenkinsfile
+commit 0ea77211d0077a771ca32e83b098481d925922b8
+tree e725ec804aec59df67d69baef11076c4fd249fc0
+parent 65dc5784ab669211749fd8062fd7024e8e922707
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:50:22 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:50:22 -0400
+
+    Fixing pipeline
+
+
+:000000 100644 0000000000000000000000000000000000000000 883f0ccf9f36211487d1feb145bcfece4b8164c9 A	manifests/deployment_updater_cluster_role.yml

@@ -1,0 +1,53 @@
+Started by user [8mha:////4JKHQOvOH2jLI59pikM6DiE7dby5W/HW0jUeQEw86H5ZAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZu/dLi1CL9xJTczDwAEmIUecAAAAA=[0mErnest Kim
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Load Test
+No emails were triggered.
+Username: ekim86@gmail.com
+API Endpoint: https://api.octoperf.com
+Launching Scenario with:
+- name: Moray Eel,
+Starting test...
+Bench Report: https://api.octoperf.com/app/#/app/workspace/2t2ms3kBtsj8ySy3ddDQ/project/od2ms3kBtsj8ySy3rNE_/analysis/WsxntHkBrOqt3Q0WyzDr
+Launching test..
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (SCALING)
+Preparing test.. (PREPARING)
+Preparing test.. (INITIALIZING)
+Preparing test.. (INITIALIZING)
+[25.03%] 19:19:04 - Hits: 0.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.28sec Total Throughput: 0.01MB Duration: 0s
+[42.52%] 19:19:14 - Hits: 0.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.28sec Total Throughput: 0.00MB Duration: 10s
+[59.87%] 19:19:25 - Hits: 107.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.27sec Total Throughput: 0.07MB Duration: 21s
+[77.28%] 19:19:35 - Hits: 333.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.27sec Total Throughput: 0.16MB Duration: 31s
+[94.66%] 19:19:46 - Hits: 333.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.27sec Total Throughput: 0.16MB Duration: 41s
+[100.00%] 19:19:56 - Hits: 730.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.26sec Total Throughput: 0.25MB Duration: 52s
+Test finished with state: FINISHED
+Saving JUnit report...
+JUnit report saved to: /home/ec2-user/.jenkins/workspace/vgr-backend Load Test/junit-report.xml
+Downloading JMeter Logs and JTLs...
+Available log files: [jonas_thompson.log.gz]
+Downloading file: jonas_thompson.log.gz
+Archived log file: /home/ec2-user/.jenkins/workspace/vgr-backend Load Test/logs/jmeter-0.log
+Merging JTLs into a single file...
+Build step 'OctoPerf' changed build result to SUCCESS
+Creating parser with percentiles:'0,50,90,100,' filterRegex:
+Performance: Recording JmeterSummarizer reports '**/*.log'
+Performance: JmeterSummarizer copying reports to master, files '[/home/ec2-user/.jenkins/workspace/vgr-backend Load Test/logs/jmeter-0.log]'
+Performance: JmeterSummarizer parsing local reports '[/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/4/performance-reports/JmeterSummarizer/jmeter-0.log]'
+Performance: Parsing report file '/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/4/performance-reports/JmeterSummarizer/jmeter-0.log' with filterRegex ''.
+Performance: Percentage of errors greater or equal than 1% sets the build as unstable
+Performance: Percentage of errors greater or equal than 1% sets the build as failure
+Performance: File jmeter-0.log reported 0.0% of errors [SUCCESS]. Build status is: SUCCESS
+Triggering a new build of [8mha:////4Dv2mJ807WxXlj3vrsIm0ANJtYQTk5mTzPJTwoBfkkBRAAAAwx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAy9EgY7/az8JP2y9CLdpMTk7NS8FFUjg4Ci/JTS5JLM/DwgxyW1ICe/EshIBMt5pCbmlGQAGc4ZqcnZ+gDzDYaW8wAAAA==[0mvgr-backend Production Deploy and Health Check #17
+No emails were triggered.
+Finished: SUCCESS

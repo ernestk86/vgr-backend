@@ -1,0 +1,65 @@
+# AWS playbook
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/Ansible/vars/pass.yml
+
+  vars:
+    key_name: my_aws
+    region: us-east-2
+    image: ami-077e31c4939f6a2f3 # https://cloud-images.ubuntu.com/locator/ec2/
+    id: "Ansible-Test"
+
+  tasks:
+
+    - name: Facts
+      block:
+
+      - name: Get instances facts
+        ec2_instance_facts:
+          aws_access_key: "{{ec2_access_key}}"
+          aws_secret_key: "{{ec2_secret_key}}"
+          region: "{{ region }}"
+        register: result
+
+      - name: Instances ID
+        debug:
+          msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
+        loop: "{{ result.instances }}"
+
+      tags: always
+
+
+    - name: Provisioning EC2 instances
+      block:
+
+      - name: Upload public key to AWS
+        ec2_key:
+          name: "{{ key_name }}"
+          key_material: "{{ lookup('file', '/home/erniek86/.ssh/{{ key_name }}.pub') }}"
+          region: "{{ region }}"
+          aws_access_key: "{{ec2_access_key}}"
+          aws_secret_key: "{{ec2_secret_key}}"
+
+      - name: Provision instance(s)
+        ec2:
+          aws_access_key: "{{ec2_access_key}}"
+          aws_secret_key: "{{ec2_secret_key}}"
+          key_name: "{{ key_name }}"
+          id: "{{ id }}"
+          group: "Ernest_Home"
+          image: "{{ image }}"
+          instance_type: t2.micro
+          region: "{{ region }}"
+          wait: true
+          count: 1
+          # exact_count: 2
+          # count_tag:
+          #   Name: App
+          # instance_tags:
+          #   Name: App
+
+      tags: ['never', 'create_ec2']

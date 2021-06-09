@@ -30,10 +30,10 @@ resource "aws_db_instance" "database" {
   username = var.db_username
   password = var.db_password
   skip_final_snapshot = true
-  security_group_names = tolist(["Ernest_Home"])
+  vpc_security_group_ids = tolist(["sg-0825b33512368dbe5"])
 }
 
-resource "aws_instance" "pipelineServer" {
+resource "aws_instance" "jenkinsServer" {
   ami           = "ami-077e31c4939f6a2f3"
   instance_type = "t2.micro"
   key_name = var.key_pair_name

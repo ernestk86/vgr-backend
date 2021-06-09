@@ -1,0 +1,274 @@
+Started by remote host 40.88.151.15
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Canary
+No emails were triggered.
+[vgr-backend Canary] $ /bin/sh -xe /tmp/jenkins6451341430126249414.sh
++ curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header 'content-type: application/json' --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IlBySnM2a3MybnFhQnlHZkZyUUFPeV9ybjQ1TlEzT3dNUnluQnFWcHFNaUkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tcW5qc3YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImJiYTI2M2IxLTFjMTEtNGRiOC1hNjE3LTVjNzg0ZmNiNjlkZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.mOGpVWFQFla54PcE7zJkUj2cL8Uy75IFoTBzjehKDXXs8Vaiuf7ogvEvLPMqqlvsOdjMyf0HlxY_UDkZ45mq8AUVumMOc3ockvOul3I3NgjY_FdV954cHAS8N7mrep6RhxyJ55xJUsNqLzX02PsReNRB_dNPrFR6ml64tlx8zwm90mZbzaAlY4Buggiqac1UR0MfjuzqDO6uYuyAh7FzFGnE4eC20RloUroyN0Wf66Kh5p-E-5CHg4KCFRqR3CG2fmd-27-X6srFP2BFOWCG3N1g4h1EKss8BVcA29xaxQKReklz-kkKSOi_uFS2xlq_MhX9mF1ZSZyGX3tuA6dZ0A' --insecure --data '{
+           "apiVersion": "apps/v1",
+           "kind": "Deployment",
+           "metadata": {
+              "name": "vgr-backend-canary",
+              "labels": {
+                 "app": "vgr-backend-canary"
+              }
+           },
+           "spec": {
+              "replicas": 1,
+              "revisionHistoryLimit": 3,
+              "selector": {
+                 "matchLabels": {
+                    "app": "vgr-backend-canary",
+                    "track": "stable"
+                 }
+              },
+              "template": {
+                 "metadata": {
+                    "labels": {
+                       "app": "vgr-backend-canary",
+                       "track": "stable"
+                    }
+                 },
+                 "spec": {
+                    "volumes": null,
+                    "containers": [
+                       {
+                          "name": "vgr-backend-canary",
+                          "image": "ernestk86/vgr-backend-canary:latest",
+                          "ports": [
+                             {
+                                "containerPort": 8885
+                             }
+                          ],
+                          "imagePullPolicy": "Always",
+                          "env": [
+                             {
+                                "name": "DB_URL",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "DB_URL"
+                                   }
+                                }
+                             },
+                             {
+                                "name": "DB_USERNAME",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "DB_USERNAME"
+                                   }
+                                }
+                             },
+                             {
+                                "name": "DB_PASSWORD",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "DB_PASSWORD"
+                                   }
+                                }
+                             },
+                             {
+                                "name": "AWS_SES_HOST",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "AWS_SES_HOST"
+                                   }
+                                }
+                             },
+                             {
+                                "name": "AWS_SES_USERNAME",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "AWS_SES_USERNAME"
+                                   }
+                                }
+                             },
+                             {
+                                "name": "AWS_SES_PASSWORD",
+                                "valueFrom": {
+                                   "secretKeyRef": {
+                                      "name": "vgr-backend-creds",
+                                      "key": "AWS_SES_PASSWORD"
+                                   }
+                                }
+                             }
+                          ]
+                       }
+                    ]
+                 }
+              }
+           }
+        }'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "vgr-backend-canary",
+    "namespace": "default",
+    "selfLink": "/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary",
+    "uid": "f843f2f2-9b5c-4f5a-9f54-051b7aece956",
+    "resourceVersion": "1621898",
+    "generation": 32,
+    "creationTimestamp": "2021-05-26T18:01:39Z",
+    "labels": {
+      "app": "vgr-backend-canary"
+    },
+    "managedFields": [
+      {
+        "manager": "kubectl-client-side-apply",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2021-05-26T18:01:39Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:metadata":{"f:labels":{".":{},"f:app":{}}},"f:spec":{"f:progressDeadlineSeconds":{},"f:revisionHistoryLimit":{},"f:selector":{"f:matchLabels":{".":{},"f:app":{},"f:track":{}}},"f:strategy":{"f:rollingUpdate":{".":{},"f:maxSurge":{},"f:maxUnavailable":{}},"f:type":{}},"f:template":{"f:metadata":{"f:labels":{".":{},"f:app":{},"f:track":{}}},"f:spec":{"f:containers":{"k:{\"name\":\"vgr-backend-canary\"}":{".":{},"f:env":{".":{},"k:{\"name\":\"AWS_SES_HOST\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"AWS_SES_PASSWORD\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"AWS_SES_USERNAME\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_PASSWORD\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_URL\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_USERNAME\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}}},"f:image":{},"f:imagePullPolicy":{},"f:name":{},"f:ports":{".":{},"k:{\"containerPort\":8885,\"protocol\":\"TCP\"}":{".":{},"f:containerPort":{},"f:protocol":{}}},"f:resources":{},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{}}},"f:dnsPolicy":{},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{}}}}}
+      },
+      {
+        "manager": "curl",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2021-05-27T13:49:47Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:spec":{"f:replicas":{}}}
+      }
+    ]
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "vgr-backend-canary",
+        "track": "stable"
+      }
+    },
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "app": "vgr-backend-canary",
+          "track": "stable"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "vgr-backend-canary",
+            "image": "ernestk86/vgr-backend-canary:latest",
+            "ports": [
+              {
+                "containerPort": 8885,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "DB_URL",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_URL"
+                  }
+                }
+              },
+              {
+                "name": "DB_USERNAME",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_USERNAME"
+                  }
+                }
+              },
+              {
+                "name": "DB_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_HOST",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "100  9991    0  6088  100  3903  44437  28489 --:--:-- --:--:-- --:--:-- 72927
+key": "AWS_SES_HOST"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_USERNAME",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "AWS_SES_USERNAME"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "AWS_SES_PASSWORD"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 3,
+    "progressDeadlineSeconds": 600
+  },
+  "status": {
+    "observedGeneration": 31,
+    "conditions": [
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2021-05-26T18:01:39Z",
+        "lastTransitionTime": "2021-05-26T18:01:39Z",
+        "reason": "NewReplicaSetAvailable",
+        "message": "ReplicaSet \"vgr-backend-canary-56f9f4c9dc\" has successfully progressed."
+      },
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2021-05-28T20:03:02Z",
+        "lastTransitionTime": "2021-05-28T20:03:02Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      }
+    ]
+  }
+}No emails were triggered.
+Triggering a new build of [8mha:////4FsqwWvfZSR/k8Z0hvo+AMp1XaWXObxwmyp7WRHWOQDfAAAAqR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzREgZ5/az8JP2y9CLdpMTk7NS8FFUjA5/8RBAVklpcog8AhK87qdQAAAA=[0mvgr-backend Load Test
+Finished: SUCCESS

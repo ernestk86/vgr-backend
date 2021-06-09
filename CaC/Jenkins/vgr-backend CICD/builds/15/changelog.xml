@@ -1,0 +1,10 @@
+commit af7f30332a52866b1f228740776d9fa0993c9959
+tree c8c713f222b91cfff9585ae49110d1219ce7f38b
+parent 0be9170db1691f85ad8e983188933ddadf9a34cc
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-26 09:44:35 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-26 09:44:35 -0400
+
+    Bump replicas to 3
+
+
+:100644 100644 8b7a6350117119b720a63db744ab792cad311005 58951a60c1caaa967c9fdc584d91e8bc19c8c7ca M	manifests/vgr-backend_prod_deploy.yml

@@ -1,0 +1,7 @@
+Generic Cause
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Sonar Check
+[vgr-backend Sonar Check] $ /bin/sh -xe /tmp/jenkins17547259245180819139.sh
++ echo ERROR
+ERROR
+Finished: SUCCESS

@@ -1,0 +1,11 @@
+commit 65dc5784ab669211749fd8062fd7024e8e922707
+tree 79f4d7086ffbbb7fcd1c1696d26a61796c512951
+parent ce763c8a43a6cb2fd83c1964fa8d16e0ef14201c
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:08:53 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:08:53 -0400
+
+    Testing full pipeline
+
+
+:100644 100644 2e2de3dd5df1c6869db593ae013bc7765ccb9d12 2eaf2abfb464571f51b6907f5ef1aa32fe1a2872 M	manifests/prometheus_servicemonitor.yml
+:100644 100644 58951a60c1caaa967c9fdc584d91e8bc19c8c7ca 611b9c28ae8c7758a1142a8e85b4a9a93dfdb1a6 M	manifests/vgr-backend_prod_deploy.yml

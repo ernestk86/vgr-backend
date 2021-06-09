@@ -1,0 +1,27 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-RemoteCause>
+            <addr>40.88.151.15</addr>
+          </hudson.model.Cause_-RemoteCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+  </actions>
+  <queueId>203</queueId>
+  <timestamp>1622233159790</timestamp>
+  <startTime>1622233159792</startTime>
+  <result>SUCCESS</result>
+  <duration>182</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/home/ec2-user/.jenkins/workspace/vgr-backend Canary</workspace>
+  <hudsonVersion>2.277.4</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

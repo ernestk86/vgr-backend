@@ -1,0 +1,26 @@
+Started by user [8mha:////4JKHQOvOH2jLI59pikM6DiE7dby5W/HW0jUeQEw86H5ZAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZu/dLi1CL9xJTczDwAEmIUecAAAAA=[0mErnest Kim
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Load Test
+No emails were triggered.
+Username: ekim86@gmail.com
+API Endpoint: https://api.octoperf.com
+Launching Scenario with:
+- name: Moray Eel,
+Starting test...
+Bench Report: https://api.octoperf.com/app/#/app/workspace/2t2ms3kBtsj8ySy3ddDQ/project/od2ms3kBtsj8ySy3rNE_/analysis/PGRhtHkBSUMsOvm2LZ5s
+Launching test..
+Preparing test.. (PREPARING)
+FATAL: Error while running test: java.lang.InterruptedException: sleep interrupted
+Build step 'OctoPerf' changed build result to FAILURE
+Creating parser with percentiles:'0,50,90,100,' filterRegex:
+Performance: Recording JmeterSummarizer reports '**/*.log'
+Performance: JmeterSummarizer copying reports to master, files '[/home/ec2-user/.jenkins/workspace/vgr-backend Load Test/logs/jmeter-0.log]'
+Performance: JmeterSummarizer parsing local reports '[/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/3/performance-reports/JmeterSummarizer/jmeter-0.log]'
+Performance: Parsing report file '/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/3/performance-reports/JmeterSummarizer/jmeter-0.log' with filterRegex ''.
+Performance: Percentage of errors greater or equal than 1% sets the build as unstable
+Performance: Percentage of errors greater or equal than 1% sets the build as failure
+Performance: File jmeter-0.log reported 0.0% of errors [SUCCESS]. Build status is: FAILURE
+Email was triggered for: Failure - Any
+Sending email for trigger: Failure - Any
+Sending email to: ekim86@gmail.com
+Finished: FAILURE

@@ -1,0 +1,19 @@
+commit 107e5033740282099e7bcdf3a5baaaf4ba6dc3df
+tree 98f31f3397182c41095f8f8216dfbf8be1fb30cc
+parent 0775c47917b9676d09ed6a80af089b8e6057e6dd
+author ernestk86 <52210251+ernestk86@users.noreply.github.com> 2021-05-28 14:10:21 -0400
+committer GitHub <noreply@github.com> 2021-05-28 14:10:21 -0400
+
+    Update docker.yml
+
+:100644 100644 26bc27159876e5073080663529a8a5ec36a51d19 5bbee64cdbfb98e348a232b063dddb790b130192 M	.github/workflows/docker.yml
+commit 0775c47917b9676d09ed6a80af089b8e6057e6dd
+tree 4bc2d292ef4e73946930cb7ac27ca48515dd0cc3
+parent ed13f36d0c62526bc8850bf338cd0109aed07922
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 14:02:40 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 14:02:40 -0400
+
+    Testing out full pipeline
+
+
+:000000 100644 0000000000000000000000000000000000000000 81b7f637c77ae5f69483d1e28113f3105ead05f3 A	TestPipeline.txt

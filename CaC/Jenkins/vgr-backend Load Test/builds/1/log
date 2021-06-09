@@ -1,0 +1,37 @@
+Started by user [8mha:////4JKHQOvOH2jLI59pikM6DiE7dby5W/HW0jUeQEw86H5ZAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZu/dLi1CL9xJTczDwAEmIUecAAAAA=[0mErnest Kim
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Load Test
+No emails were triggered.
+Username: ekim86@gmail.com
+API Endpoint: https://api.octoperf.com
+Launching Scenario with:
+- name: Moray Eel,
+Starting test...
+Bench Report: https://api.octoperf.com/app/#/app/workspace/2t2ms3kBtsj8ySy3ddDQ/project/od2ms3kBtsj8ySy3rNE_/analysis/kckdtHkBrOqt3Q0WDinu
+Launching test..
+Preparing test.. (INITIALIZING)
+Preparing test.. (INITIALIZING)
+[23.18%] 17:55:04 - Hits: 0.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: Infinitysec Total Throughput: 0.00MB Duration: 0s
+[40.61%] 17:55:14 - Hits: 95.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.27sec Total Throughput: 0.04MB Duration: 10s
+[57.94%] 17:55:25 - Hits: 95.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.27sec Total Throughput: 0.07MB Duration: 21s
+[75.28%] 17:55:35 - Hits: 175.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.26sec Total Throughput: 0.07MB Duration: 31s
+[92.74%] 17:55:46 - Hits: 572.00hits Errors: 0.00errors % Errors: 0.00% errors Avg Elapsed: 0.26sec Total Throughput: 0.19MB Duration: 41s
+Test finished with state: FINISHED
+Saving JUnit report...
+JUnit report saved to: /home/ec2-user/.jenkins/workspace/vgr-backend Load Test/junit-report.xml
+Downloading JMeter Logs and JTLs...
+Available log files: [delsie_heathcote.log.gz]
+Downloading file: delsie_heathcote.log.gz
+Archived log file: /home/ec2-user/.jenkins/workspace/vgr-backend Load Test/logs/jmeter-0.log
+Merging JTLs into a single file...
+Build step 'OctoPerf' changed build result to SUCCESS
+Creating parser with percentiles:'0,50,90,100,' filterRegex:
+Performance: Recording JmeterSummarizer reports '**/*.log'
+Performance: JmeterSummarizer copying reports to master, files '[/home/ec2-user/.jenkins/workspace/vgr-backend Load Test/logs/jmeter-0.log]'
+Performance: JmeterSummarizer parsing local reports '[/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/1/performance-reports/JmeterSummarizer/jmeter-0.log]'
+Performance: Parsing report file '/home/ec2-user/.jenkins/jobs/vgr-backend Load Test/builds/1/performance-reports/JmeterSummarizer/jmeter-0.log' with filterRegex ''.
+Performance: Percentage of errors greater or equal than 1% sets the build as unstable
+Performance: Percentage of errors greater or equal than 1% sets the build as failure
+Performance: File jmeter-0.log reported 0.0% of errors [SUCCESS]. Build status is: SUCCESS
+No emails were triggered.
+Finished: SUCCESS

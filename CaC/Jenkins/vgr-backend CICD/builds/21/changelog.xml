@@ -1,0 +1,10 @@
+commit 0ea77211d0077a771ca32e83b098481d925922b8
+tree e725ec804aec59df67d69baef11076c4fd249fc0
+parent 65dc5784ab669211749fd8062fd7024e8e922707
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:50:22 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:50:22 -0400
+
+    Fixing pipeline
+
+
+:000000 100644 0000000000000000000000000000000000000000 883f0ccf9f36211487d1feb145bcfece4b8164c9 A	manifests/deployment_updater_cluster_role.yml

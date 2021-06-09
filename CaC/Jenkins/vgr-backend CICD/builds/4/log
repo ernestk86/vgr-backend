@@ -1,0 +1,25 @@
+Started by user [8mha:////4JKHQOvOH2jLI59pikM6DiE7dby5W/HW0jUeQEw86H5ZAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZu/dLi1CL9xJTczDwAEmIUecAAAAA=[0mErnest Kim
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend CICD
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ec2-user/.jenkins/workspace/vgr-backend CICD/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/ernestk86/vgr-backend # timeout=10
+Fetching upstream changes from https://github.com/ernestk86/vgr-backend
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.23.4'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/ernestk86/vgr-backend +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision be1f7a2ea0cb4941f0b98ec9c5dd06723c549d04 (refs/remotes/origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f be1f7a2ea0cb4941f0b98ec9c5dd06723c549d04 # timeout=10
+Commit message: "Testing trigger"
+ > /usr/bin/git rev-list --no-walk be1f7a2ea0cb4941f0b98ec9c5dd06723c549d04 # timeout=10
+[vgr-backend CICD] $ /bin/sh -xe /tmp/jenkins10340968495995062037.sh
++ curl -X POST -H 'Accept: application/vnd.github.v3+json' -H 'Authorization: Bearer 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' https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches -d '{"ref":"main"}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    14    0     0  100    14      0     76 --:--:-- --:--:-- --:--:--    76
+Finished: SUCCESS

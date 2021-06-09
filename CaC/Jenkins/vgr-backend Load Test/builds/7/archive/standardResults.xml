@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<results>
+<api>
+	<uri>summary</uri>
+	<samples>1</samples>
+	<average>267</average>
+	<min>267</min>
+	<median>267</median>
+	<ninetieth>267</ninetieth>
+	<max>267</max>
+	<httpCode></httpCode>
+	<errors>0.0</errors>
+</api>
+</results>

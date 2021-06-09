@@ -1,0 +1,29 @@
+commit 3f02462fdd90cda83773e80493e7c80347eae828
+tree 668d00cc9b169ecad8bade4678d79daa1eb1f485
+parent 6d580645e42283851b6363eac7c0a480ceece087
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 15:33:55 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 15:33:55 -0400
+
+    Testing Out CICD Pipeline
+
+
+:100644 100644 2492ffa83d6733b910d4f367bbe51088745c45dd 85e212a5d58c0689693b82cbebd7907d2d158fba M	TestPipeline.txt
+commit 72e76134358ba36ac911ed876e092c57bd331e2d
+tree 003fc7bb505c30612c4e0d94a738efacd4b02d5c
+parent ccd0389a36074b416336a094265900735fced38c
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 15:31:57 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-28 15:31:57 -0400
+
+    Testing out CICD Pipeline
+
+
+:100644 100644 f9f0a7b490a0d4764685b0934caca283bda64864 2492ffa83d6733b910d4f367bbe51088745c45dd M	TestPipeline.txt
+commit 1126be4783f682fc8d5b7e6ac2d96b036154072e
+tree 53325a6f3e3a199ed2f14855c64b7aa1bfaf51c8
+parent ccd0389a36074b416336a094265900735fced38c
+author ernestk86 <52210251+ernestk86@users.noreply.github.com> 2021-05-28 15:29:42 -0400
+committer GitHub <noreply@github.com> 2021-05-28 15:29:42 -0400
+
+    Update docker.yml
+
+:100644 100644 5bbee64cdbfb98e348a232b063dddb790b130192 019d40e775be6fd2db2c25937b24a9a9d5d3a815 M	.github/workflows/docker.yml

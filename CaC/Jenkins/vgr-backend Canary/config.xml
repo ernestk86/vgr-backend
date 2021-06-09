@@ -1,0 +1,158 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <authToken>canary</authToken>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>curl --request PUT \
+  --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \
+  --header &quot;content-type: application/json&quot; \
+  --header &quot;Authorization: Bearer $K8_ACCESS_TOKEN&quot; \
+  --insecure \
+  --data &apos;{
+           &quot;apiVersion&quot;: &quot;apps/v1&quot;,
+           &quot;kind&quot;: &quot;Deployment&quot;,
+           &quot;metadata&quot;: {
+              &quot;name&quot;: &quot;vgr-backend-canary&quot;,
+              &quot;labels&quot;: {
+                 &quot;app&quot;: &quot;vgr-backend-canary&quot;
+              }
+           },
+           &quot;spec&quot;: {
+              &quot;replicas&quot;: 1,
+              &quot;revisionHistoryLimit&quot;: 3,
+              &quot;selector&quot;: {
+                 &quot;matchLabels&quot;: {
+                    &quot;app&quot;: &quot;vgr-backend-canary&quot;,
+                    &quot;track&quot;: &quot;stable&quot;
+                 }
+              },
+              &quot;template&quot;: {
+                 &quot;metadata&quot;: {
+                    &quot;labels&quot;: {
+                       &quot;app&quot;: &quot;vgr-backend-canary&quot;,
+                       &quot;track&quot;: &quot;stable&quot;
+                    }
+                 },
+                 &quot;spec&quot;: {
+                    &quot;volumes&quot;: null,
+                    &quot;containers&quot;: [
+                       {
+                          &quot;name&quot;: &quot;vgr-backend-canary&quot;,
+                          &quot;image&quot;: &quot;ernestk86/vgr-backend-canary:latest&quot;,
+                          &quot;ports&quot;: [
+                             {
+                                &quot;containerPort&quot;: 8885
+                             }
+                          ],
+                          &quot;imagePullPolicy&quot;: &quot;Always&quot;,
+                          &quot;env&quot;: [
+                             {
+                                &quot;name&quot;: &quot;DB_URL&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;DB_URL&quot;
+                                   }
+                                }
+                             },
+                             {
+                                &quot;name&quot;: &quot;DB_USERNAME&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;DB_USERNAME&quot;
+                                   }
+                                }
+                             },
+                             {
+                                &quot;name&quot;: &quot;DB_PASSWORD&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;DB_PASSWORD&quot;
+                                   }
+                                }
+                             },
+                             {
+                                &quot;name&quot;: &quot;AWS_SES_HOST&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;AWS_SES_HOST&quot;
+                                   }
+                                }
+                             },
+                             {
+                                &quot;name&quot;: &quot;AWS_SES_USERNAME&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;AWS_SES_USERNAME&quot;
+                                   }
+                                }
+                             },
+                             {
+                                &quot;name&quot;: &quot;AWS_SES_PASSWORD&quot;,
+                                &quot;valueFrom&quot;: {
+                                   &quot;secretKeyRef&quot;: {
+                                      &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                      &quot;key&quot;: &quot;AWS_SES_PASSWORD&quot;
+                                   }
+                                }
+                             }
+                          ]
+                       }
+                    ]
+                 }
+              }
+           }
+        }&apos;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.83">
+      <recipientList>ekim86@gmail.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>Canary stage failed</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>true</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <from></from>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

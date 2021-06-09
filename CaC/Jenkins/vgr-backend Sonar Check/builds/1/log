@@ -1,0 +1,7 @@
+Generic Cause
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Sonar Check
+[vgr-backend Sonar Check] $ /bin/sh -xe /tmp/jenkins232583848251237554.sh
++ echo '$.qualityGate.status'
+$.qualityGate.status
+Finished: SUCCESS

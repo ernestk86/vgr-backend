@@ -1,0 +1,12 @@
+Generic Cause
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend Sonar Check
+No emails were triggered.
+[vgr-backend Sonar Check] $ /bin/sh -xe /tmp/jenkins2371667766498049859.sh
++ [[ OK == ERROR ]]
++ curl -X POST -H 'Accept: application/vnd.github.v3+json' -H 'Authorization: Bearer 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' https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/docker.yml/dispatches -d '{"ref":"main"}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    14    0     0  100    14      0     56 --:--:-- --:--:-- --:--:--    56
+No emails were triggered.
+Finished: SUCCESS

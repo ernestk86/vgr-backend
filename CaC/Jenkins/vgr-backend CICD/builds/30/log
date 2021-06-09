@@ -1,0 +1,29 @@
+Started by GitHub push by ernestk86
+Running as SYSTEM
+Building in workspace /home/ec2-user/.jenkins/workspace/vgr-backend CICD
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ec2-user/.jenkins/workspace/vgr-backend CICD/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/ernestk86/vgr-backend # timeout=10
+Fetching upstream changes from https://github.com/ernestk86/vgr-backend
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.23.4'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/ernestk86/vgr-backend +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ed13f36d0c62526bc8850bf338cd0109aed07922 (refs/remotes/origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f ed13f36d0c62526bc8850bf338cd0109aed07922 # timeout=10
+Commit message: "changing load test"
+ > /usr/bin/git rev-list --no-walk 7524da595f5e51c278e632effe742421beac750e # timeout=10
+[vgr-backend CICD] $ /bin/sh -xe /tmp/jenkins955169072355479584.sh
++ curl -X POST -H 'Accept: application/vnd.github.v3+json' -H 'Authorization: Bearer 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' https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/build.yml/dispatches -d '{"ref":"main"}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   199  100   185  100    14   1608    121 --:--:-- --:--:-- --:--:--  1730
+{
+  "message": "Cannot trigger a 'workflow_dispatch' on a disabled workflow",
+  "documentation_url": "https://docs.github.com/rest/reference/actions#create-a-workflow-dispatch-event"
+}
+Finished: SUCCESS

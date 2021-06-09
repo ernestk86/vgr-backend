@@ -1,0 +1,34 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<Tag plugin="workflow-support@3.8">
+  <node class="cps.n.StepAtomNode" plugin="workflow-cps@2.92">
+    <parentIds>
+      <string>27</string>
+    </parentIds>
+    <id>28</id>
+    <descriptorId>hudson.plugins.emailext.EmailExtStep</descriptorId>
+  </node>
+  <actions>
+    <cps.a.ArgumentsActionImpl plugin="workflow-cps@2.92">
+      <arguments>
+        <entry>
+          <string>body</string>
+          <string>Either scaling down the canary, promoting the production, or the healthcheck failed.</string>
+        </entry>
+        <entry>
+          <string>subject</string>
+          <string>Final Pipeline Stages Failed</string>
+        </entry>
+        <entry>
+          <string>to</string>
+          <string>ekim86@gmail.com</string>
+        </entry>
+      </arguments>
+      <sensitiveVariables/>
+      <isUnmodifiedBySanitization>true</isUnmodifiedBySanitization>
+    </cps.a.ArgumentsActionImpl>
+    <wf.a.TimingAction plugin="workflow-api@2.42">
+      <startTime>1622225802973</startTime>
+    </wf.a.TimingAction>
+    <s.a.LogStorageAction/>
+  </actions>
+</Tag>

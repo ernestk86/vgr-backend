@@ -1,0 +1,41 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <org.jenkinsci.plugins.gwt.GenericCause plugin="generic-webhook-trigger@1.72">
+            <resolvedVariables class="tree-map">
+              <entry>
+                <string>result</string>
+                <string>OK</string>
+              </entry>
+            </resolvedVariables>
+            <postContent>{&quot;serverUrl&quot;:&quot;https://sonarcloud.io&quot;,&quot;taskId&quot;:&quot;AXmvPwcvKnn3DtFpGcw_&quot;,&quot;status&quot;:&quot;SUCCESS&quot;,&quot;analysedAt&quot;:&quot;2021-05-27T19:12:55+0000&quot;,&quot;revision&quot;:&quot;65dc5784ab669211749fd8062fd7024e8e922707&quot;,&quot;changedAt&quot;:&quot;2021-05-27T19:12:55+0000&quot;,&quot;project&quot;:{&quot;key&quot;:&quot;vgr-backend&quot;,&quot;name&quot;:&quot;vgr-backend&quot;,&quot;url&quot;:&quot;https://sonarcloud.io/dashboard?id=vgr-backend&quot;},&quot;branch&quot;:{&quot;name&quot;:&quot;master&quot;,&quot;type&quot;:&quot;LONG&quot;,&quot;isMain&quot;:true,&quot;url&quot;:&quot;https://sonarcloud.io/dashboard?id=vgr-backend&quot;},&quot;qualityGate&quot;:{&quot;name&quot;:&quot;vgr-backend&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;conditions&quot;:[{&quot;metric&quot;:&quot;reliability_rating&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;3&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;3&quot;},{&quot;metric&quot;:&quot;security_rating&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;1&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;1&quot;},{&quot;metric&quot;:&quot;sqale_rating&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;1&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;1&quot;},{&quot;metric&quot;:&quot;duplicated_lines_density&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;2.5&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;3&quot;},{&quot;metric&quot;:&quot;branch_coverage&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;81.5&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;70&quot;},{&quot;metric&quot;:&quot;bugs&quot;,&quot;operator&quot;:&quot;GREATER_THAN&quot;,&quot;value&quot;:&quot;8&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;8&quot;},{&quot;metric&quot;:&quot;security_hotspots_reviewed&quot;,&quot;operator&quot;:&quot;LESS_THAN&quot;,&quot;value&quot;:&quot;100.0&quot;,&quot;status&quot;:&quot;OK&quot;,&quot;errorThreshold&quot;:&quot;95&quot;}]},&quot;properties&quot;:{}}</postContent>
+            <printContributedVariables>false</printContributedVariables>
+            <printPostContent>false</printPostContent>
+            <cause>Generic Cause</cause>
+          </org.jenkinsci.plugins.gwt.GenericCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.model.ParametersAction>
+      <safeParameters class="sorted-set"/>
+      <parameters/>
+      <parameterDefinitionNames class="empty-list"/>
+    </hudson.model.ParametersAction>
+  </actions>
+  <queueId>82</queueId>
+  <timestamp>1622142820622</timestamp>
+  <startTime>1622142820625</startTime>
+  <result>SUCCESS</result>
+  <duration>200</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/home/ec2-user/.jenkins/workspace/vgr-backend Sonar Check</workspace>
+  <hudsonVersion>2.277.4</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

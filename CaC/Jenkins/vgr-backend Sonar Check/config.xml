@@ -1,0 +1,83 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <org.jenkinsci.plugins.gwt.GenericTrigger plugin="generic-webhook-trigger@1.72">
+      <spec></spec>
+      <genericVariables>
+        <org.jenkinsci.plugins.gwt.GenericVariable>
+          <expressionType>JSONPath</expressionType>
+          <key>result</key>
+          <value>$.qualityGate.status</value>
+          <regexpFilter></regexpFilter>
+          <defaultValue>default</defaultValue>
+        </org.jenkinsci.plugins.gwt.GenericVariable>
+      </genericVariables>
+      <regexpFilterText></regexpFilterText>
+      <regexpFilterExpression></regexpFilterExpression>
+      <printPostContent>false</printPostContent>
+      <printContributedVariables>false</printContributedVariables>
+      <causeString>Generic Cause</causeString>
+      <token>sonarcheck</token>
+      <tokenCredentialId></tokenCredentialId>
+      <silentResponse>false</silentResponse>
+      <overrideQuietPeriod>false</overrideQuietPeriod>
+    </org.jenkinsci.plugins.gwt.GenericTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>if [[ $result == ERROR ]]
+then
+  exit 2
+else
+  curl -X POST -H &quot;Accept: application/vnd.github.v3+json&quot; -H &quot;Authorization: Bearer $GITHUB_ACCESS_TOKEN&quot; https://api.github.com/repos/ernestk86/vgr-backend/actions/workflows/docker.yml/dispatches -d &apos;{&quot;ref&quot;:&quot;main&quot;}&apos;
+fi</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.83">
+      <recipientList>$DEFAULT_RECIPIENTS,
+ekim86@gmail.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <subject>$PROJECT_DEFAULT_SUBJECT</subject>
+            <body>$PROJECT_DEFAULT_CONTENT</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.DevelopersRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>$PROJECT_DEFAULT_REPLYTO</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>default</contentType>
+      <defaultSubject>$DEFAULT_SUBJECT</defaultSubject>
+      <defaultContent>$DEFAULT_CONTENT</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript>$DEFAULT_PRESEND_SCRIPT</presendScript>
+      <postsendScript>$DEFAULT_POSTSEND_SCRIPT</postsendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>$DEFAULT_REPLYTO</replyTo>
+      <from></from>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>

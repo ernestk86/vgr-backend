@@ -1,0 +1,389 @@
+Started by user [8mha:////4JKHQOvOH2jLI59pikM6DiE7dby5W/HW0jUeQEw86H5ZAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgZu/dLi1CL9xJTczDwAEmIUecAAAAA=[0mErnest Kim
+Obtained Jenkinsfile from git https://github.com/ernestk86/vgr-backend.git
+Running in Durability level: MAX_SURVIVABILITY
+[8mha:////4L+fP4ZAIQ7xLlcMw+I/tNYlo2LYplFCwfw1H5uKku23AAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4EenftOEsrAvuJRnOc2encMAg9HGmZrmezD0Vt7CAfQPAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Running on [8mha:////4GHIRo+FTnnf+HRRuSz9j1hxdFbyK9JXgiAotEwoFTSbAAAAnh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZh/eT83ILSktQifY3cxGIgrakPAHib2iPIAAAA[0mJenkins in /home/ec2-user/.jenkins/workspace/vgr-backend Production Deploy and Health Check
+[8mha:////4Le6Lxd3ZqpFh9VZIK/avd3baLVKI9ljEliutEWAaLhoAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4PsTaN990GSQmbyKpZAw9Dfg28GCeROzn+rWWzdG8bTUAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] stage
+[8mha:////4Ars6nALEnMlcvg8boIlqNqd2vbVYIz/RoVv6vCOyt9/AAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] { (Declarative: Checkout SCM)
+[8mha:////4IP7wDf5WsdUacUztOdYAdK0V/SI3XFph/XJ69v0efJ0AAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaWGsbAmNJ0AWEZb8zwLrbuWJvJp3kLiJlZNMMm+a93rDOic4UbLcG+wdZu14DKOti0+U+lugiXu6ck2YKRguzSSpM+cFJRUDS1gDKwEbgzpQdmgLbIVXD9UGhba9lFS/o4DGdQM8gYlqLiqVL8wJdvexy4Q/z18BzLEA29ce4gfg7KmOvAAAAA==[0m[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > /usr/bin/git rev-parse --resolve-git-dir /home/ec2-user/.jenkins/workspace/vgr-backend Production Deploy and Health Check/.git # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/ernestk86/vgr-backend.git # timeout=10
+Fetching upstream changes from https://github.com/ernestk86/vgr-backend.git
+ > /usr/bin/git --version # timeout=10
+ > git --version # 'git version 2.23.4'
+ > /usr/bin/git fetch --tags --force --progress -- https://github.com/ernestk86/vgr-backend.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision b8d7fe194012c6dec15e1ded0a80b5cb7fff8833 (refs/remotes/origin/main)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f b8d7fe194012c6dec15e1ded0a80b5cb7fff8833 # timeout=10
+Commit message: "I'm an idiot"
+ > /usr/bin/git rev-list --no-walk b8d7fe194012c6dec15e1ded0a80b5cb7fff8833 # timeout=10
+[8mha:////4PXbnnzLKrdKEl4OEq71Ldssnjo3tubVps1CcU39aQ60AAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbGRNjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9Dg2gqvAAAAA==[0m[Pipeline] }
+[8mha:////4NbgEdrV83ozoEkYgVqnGd4xfMI1gCJ96g2Su0Vy7HFBAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQRbWRhjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9J+wGOvAAAAA==[0m[Pipeline] // stage
+[8mha:////4AEJvLq/azSIJOVlAkkLwuuOeXYaatAOmwUpZM956jyJAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQDEh2iorXc8AITG+PEugv2haTiRXyNPxCIRMVWOyut5vmCMic4UPKycdgGzHWQXez91ORAqb1EGmRDZ1kTZopOajdosu44oyZ2MEcUsFCwdFhHygE9w0o15m6qaNBXJ07TtldQBHuDBwg1mdkk/sKYYH3tbSb8ef4KYOwYxI6h2G4+x/INtuQqUcEAAAA=[0m[Pipeline] withEnv
+[8mha:////4GkWLfcCbPCiTWxM5FmRm0+F7NIk7O2YlJAWnnz5LGDcAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycoiUzoiJNerCCUITQtLo/zZJSSdOxNW4Ay2VmPBg2Zas93pDGQOcKBjuNHYWY2t570czJ54pdDdPmTu68pYwkte80bkhpc9rbShpWFUw2AjYamw9RYsmwU44+ZCVl2iqSwrzdhTArBrgCYWYyUmG9C1TgP19VJHwx/kLgKlPwOrDYvXyLD8BobDcwgAAAA==[0m[Pipeline] {
+[8mha:////4Anv7KztMCA5JaBZFmr20bkeTpF2e9EDsd6y2tcqnHUHAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUZUVMrFEWThCaEJJG/7dJSjpxIq7GHWipxIQHy7ZkvdcbqhjgRMEwp7GzGFvLej+aObFMobt5yszRlbWEkbxmQmdBSp/XKihpWFWUsOGw1dh6ihZNgh138iFrL9HUlxTm7cihtGqAJxR8JicZ0rdMAfb3UUXCH+cvAKY+Qdk0ix2WZ/UBbwyqm8IAAAA=[0m[Pipeline] stage
+[8mha:////4FLtPzb8O6MHmdX73F9UTdL83p0X185pEP2M+QZriAo1AAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUwIiYukZZOEFoQkgb/V9+UtqJE3E17kBLJSY8WLYl673eUESGE7ETjcXWY6y96ELvpiQG4vYaaBANXURNGClYoeygyNhqqYqShUVZDisJa4t1oOjRJdjIRj90GTS68px42o4Scm/u8IRMTuSkOX3LyLC99SYS/jh/ATB2CfLdfrbD/Cw+y7kUycIAAAA=[0m[Pipeline] { (Scale down Canary)
+[8mha:////4HVaIoQ3K3CcssQ72vWeirYWUCcDZOk8RS7Bw8jBqYnjAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBB2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBgq0rvS+AAAA[0m[Pipeline] sh
++ curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header 'content-type: application/json' --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IlBySnM2a3MybnFhQnlHZkZyUUFPeV9ybjQ1TlEzT3dNUnluQnFWcHFNaUkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tcW5qc3YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImJiYTI2M2IxLTFjMTEtNGRiOC1hNjE3LTVjNzg0ZmNiNjlkZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.mOGpVWFQFla54PcE7zJkUj2cL8Uy75IFoTBzjehKDXXs8Vaiuf7ogvEvLPMqqlvsOdjMyf0HlxY_UDkZ45mq8AUVumMOc3ockvOul3I3NgjY_FdV954cHAS8N7mrep6RhxyJ55xJUsNqLzX02PsReNRB_dNPrFR6ml64tlx8zwm90mZbzaAlY4Buggiqac1UR0MfjuzqDO6uYuyAh7FzFGnE4eC20RloUroyN0Wf66Kh5p-E-5CHg4KCFRqR3CG2fmd-27-X6srFP2BFOWCG3N1g4h1EKss8BVcA29xaxQKReklz-kkKSOi_uFS2xlq_MhX9mF1ZSZyGX3tuA6dZ0A' --insecure --data '{
+                                "apiVersion": "apps/v1",
+                                "kind": "Deployment",
+                                "metadata": {
+                                    "name": "vgr-backend-canary",
+                                    "labels": {
+                                        "app": "vgr-backend-canary"
+                                    }
+                                },
+                                "spec": {
+                                    "replicas": 0,
+                                    "revisionHistoryLimit": 3,
+                                    "selector": {
+                                        "matchLabels": {
+                                            "app": "vgr-backend-canary",
+                                            "track": "stable"
+                                        }
+                                    },
+                                    "template": {
+                                        "metadata": {
+                                            "labels": {
+                                            "app": "vgr-backend-canary",
+                                            "track": "stable"
+                                            }
+                                        },
+                                        "spec": {
+                                            "volumes": null,
+                                            "containers": [
+                                            {
+                                                "name": "vgr-backend-canary",
+                                                "image": "ernestk86/vgr-backend-canary:latest",
+                                                "ports": [
+                                                    {
+                                                        "containerPort": 8885
+                                                    }
+                                                ],
+                                                "imagePullPolicy": "Always",
+                                                "env": [
+                                                    {
+                                                        "name": "DB_URL",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "DB_URL"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "DB_USERNAME",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "DB_USERNAME"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "DB_PASSWORD",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "DB_PASSWORD"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "AWS_SES_HOST",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "AWS_SES_HOST"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "AWS_SES_USERNAME",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "AWS_SES_USERNAME"
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "AWS_SES_PASSWORD",
+                                                        "valueFrom": {
+                                                        "secretKeyRef": {
+                                                            "name": "vgr-backend-creds",
+                                                            "key": "AWS_SES_PASSWORD"
+                                                        }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0{
+  "kind": "Deployment",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "name": "vgr-backend-canary",
+    "namespace": "default",
+    "selfLink": "/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary",
+    "uid": "f843f2f2-9b5c-4f5a-9f54-051b7aece956",
+    "resourceVersion": "1098123",
+    "generation": 9,
+    "creationTimestamp": "2021-05-26T18:01:39Z",
+    "labels": {
+      "app": "vgr-backend-canary"
+    },
+    "managedFields": [
+      {
+        "manager": "kubectl-client-side-apply",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2021-05-26T18:01:39Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:metadata":{"f:labels":{".":{},"f:app":{}}},"f:spec":{"f:progressDeadlineSeconds":{},"f:revisionHistoryLimit":{},"f:selector":{"f:matchLabels":{".":{},"f:app":{},"f:track":{}}},"f:strategy":{"f:rollingUpdate":{".":{},"f:maxSurge":{},"f:maxUnavailable":{}},"f:type":{}},"f:template":{"f:metadata":{"f:labels":{".":{},"f:app":{},"f:track":{}}},"f:spec":{"f:containers":{"k:{\"name\":\"vgr-backend-canary\"}":{".":{},"f:env":{".":{},"k:{\"name\":\"AWS_SES_HOST\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"AWS_SES_PASSWORD\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"AWS_SES_USERNAME\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_PASSWORD\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_URL\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}},"k:{\"name\":\"DB_USERNAME\"}":{".":{},"f:name":{},"f:valueFrom":{".":{},"f:secretKeyRef":{".":{},"f:key":{},"f:name":{}}}}},"f:image":{},"f:imagePullPolicy":{},"f:name":{},"f:ports":{".":{},"k:{\"containerPort\":8885,\"protocol\":\"TCP\"}":{".":{},"f:containerPort":{},"f:protocol":{}}},"f:resources":{},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{}}},"f:dnsPolicy":{},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{}}}}}
+      },
+      {
+        "manager": "curl",
+        "operation": "Update",
+        "apiVersion": "apps/v1",
+        "time": "2021-05-27T13:49:47Z",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {"f:spec":{"f:replicas":{}}}
+      }
+    ]
+  },
+  "spec": {
+    "replicas": 0,
+    "selector": {
+      "matchLabels": {
+        "app": "vgr-backend-canary",
+        "track": "stable"
+      }
+    },
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "app": "vgr-backend-canary",
+          "track": "stable"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "vgr-backend-canary",
+            "image": "ernestk86/vgr-backend-canary:latest",
+            "ports": [
+              {
+                "containerPort": 8885,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "DB_URL",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_URL"
+                  }
+                }
+              },
+              {
+                "name": "DB_USERNAME",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_USERNAME"
+                  }
+                }
+              },
+              {
+                "name": "DB_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_HOST",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "k100 12194    0  6086  100  6108  45081  45244 --:--:-- --:--:-- --:--:-- 90325
+ey": "AWS_SES_HOST"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_USERNAME",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "AWS_SES_USERNAME"
+                  }
+                }
+              },
+              {
+                "name": "AWS_SES_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "vgr-backend-creds",
+                    "key": "AWS_SES_PASSWORD"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {
+          
+        },
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 3,
+    "progressDeadlineSeconds": 600
+  },
+  "status": {
+    "observedGeneration": 8,
+    "conditions": [
+      {
+        "type": "Progressing",
+        "status": "True",
+        "lastUpdateTime": "2021-05-26T18:01:39Z",
+        "lastTransitionTime": "2021-05-26T18:01:39Z",
+        "reason": "NewReplicaSetAvailable",
+        "message": "ReplicaSet \"vgr-backend-canary-56f9f4c9dc\" has successfully progressed."
+      },
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2021-05-27T19:46:15Z",
+        "lastTransitionTime": "2021-05-27T19:46:15Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      }
+    ]
+  }
+}
+[8mha:////4MR6+kadeOVYAq0GQaLPT2V1LRSpqoKUnVHAOy5z6FGoAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIihKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N7BnLt++AAAA[0m[Pipeline] }
+[8mha:////4Gxcf04vuHtWRweznG0UEpBnw4utBmLa5fZIQl/WR0dgAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N4glvS6+AAAA[0m[Pipeline] // stage
+[8mha:////4EMvcq2aJEoMijSiHLrbEw3s4cQ/VIJaU68zFTFr7HiPAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUnRgQE2uUhROEJoSk0f9tkpJOnIircQdaKjHhwbItWe/1hioGOFEwzGnsLMbWst6PZk4sU+hunjJzdGUtYSSvmdBZkNLntQpKGlYVJWw4bDW2nqJFk2DHnXzI2ks09SWFeTtyKK0a4AkFn8lJhvQtU4D9fVSR8Mf5C4CpT1A2zWKH5Vl9ANydZ8vCAAAA[0m[Pipeline] stage
+[8mha:////4Bf3Z+XRtt1Msy5era1LmCE9T+op49WhoVXsLtgSNWyVAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUTCAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD0rlhNLCAAAA[0m[Pipeline] { (Promote image to Production)
+[8mha:////4MA1LKeGt//RDDkPYWgXB2VG/CBCNM3kzcAi7zcKrtvTAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiOhCiSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBr2eB0O+AAAA[0m[Pipeline] sh
++ docker pull ernestk86/vgr-backend-canary:latest
+latest: Pulling from ernestk86/vgr-backend-canary
+5040bd298390: Pulling fs layer
+fce5728aad85: Pulling fs layer
+76610ec20bf5: Pulling fs layer
+60170fec2151: Pulling fs layer
+e98f73de8f0d: Pulling fs layer
+11f7af24ed9c: Pulling fs layer
+49e2d6393f32: Pulling fs layer
+bb9cdec9c7f3: Pulling fs layer
+8607bec76222: Pulling fs layer
+60170fec2151: Waiting
+e98f73de8f0d: Waiting
+11f7af24ed9c: Waiting
+49e2d6393f32: Waiting
+bb9cdec9c7f3: Waiting
+8607bec76222: Waiting
+fce5728aad85: Verifying Checksum
+fce5728aad85: Download complete
+60170fec2151: Verifying Checksum
+60170fec2151: Download complete
+76610ec20bf5: Verifying Checksum
+76610ec20bf5: Download complete
+e98f73de8f0d: Verifying Checksum
+e98f73de8f0d: Download complete
+11f7af24ed9c: Verifying Checksum
+11f7af24ed9c: Download complete
+bb9cdec9c7f3: Verifying Checksum
+bb9cdec9c7f3: Download complete
+5040bd298390: Verifying Checksum
+5040bd298390: Download complete
+8607bec76222: Verifying Checksum
+8607bec76222: Download complete
+49e2d6393f32: Verifying Checksum
+49e2d6393f32: Download complete
+5040bd298390: Pull complete
+fce5728aad85: Pull complete
+76610ec20bf5: Pull complete
+60170fec2151: Pull complete
+e98f73de8f0d: Pull complete
+11f7af24ed9c: Pull complete
+49e2d6393f32: Pull complete
+bb9cdec9c7f3: Pull complete
+8607bec76222: Pull complete
+Digest: sha256:8439a33308d6f1cb3893677a5dd1d7609df7543ad8ff922a2c00325fcd06a920
+Status: Downloaded newer image for ernestk86/vgr-backend-canary:latest
+docker.io/ernestk86/vgr-backend-canary:latest
+[8mha:////4FpB6TsLQnUsJBZ55mO6wztaBjDJOBjvzM9RkAdkTBJ8AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICVEgoFa3lhheYxBgn1l2wHZyKF/E1/oBFJCq2WO1sM683LIOHmr3BTlNvKTQWBzeavDCx76+OE3Z8wYYpsNModZLc6tOMkqOGOUUJCwErTY3jYMlEWItOPVTlFJnqHH3+jgJK297hCYXI5qh8/MLkYXMb28D08/wVwDREKHeHXPvt8AGtm4OQvgAAAA==[0m[Pipeline] sh
++ docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production
+[8mha:////4PDCsDVlAebO7AeNorK166VK8q9B1KKh9BSoimuGe5KyAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKiUCEhqrRWGl5gYmOcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThwM9poGS7Gz6N1o8sKJw3B1PGHPF+yYIjuNrZ5aVrpZsOWkYUlRwkrARlPnOFoyCbailw9ZOUmmOqeQv6OA0qo7PKEQ2ZxkSF+YA+xuo4pMP89fAcw+QVkfcu1r/wHsqpiJvgAAAA==[0m[Pipeline] sh
++ docker push ernestk86/vgr-backend:production
+The push refers to repository [docker.io/ernestk86/vgr-backend]
+bb30f09f905e: Preparing
+35c20f26d188: Preparing
+c3fe59dd9556: Preparing
+6ed1a81ba5b6: Preparing
+a3483ce177ce: Preparing
+ce6c8756685b: Preparing
+30339f20ced0: Preparing
+0eb22bfb707d: Preparing
+a2ae92ffcd29: Preparing
+ce6c8756685b: Waiting
+30339f20ced0: Waiting
+0eb22bfb707d: Waiting
+a2ae92ffcd29: Waiting
+35c20f26d188: Layer already exists
+c3fe59dd9556: Layer already exists
+a3483ce177ce: Layer already exists
+6ed1a81ba5b6: Layer already exists
+denied: requested access to the resource is denied
+[8mha:////4Jl6AmDeS7aabFeb4sy57qvRVpHF4r/eHkEA907/og3uAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPMIRqZAQVVorDS8w8WGcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThyM6JEGS7GzwrvR5CUmDsPV8SR6voiOKbJD0eLUssZmwZYTwpKihJWEDVLnOFoyCbayVw9VOUWmOqeQv6OE0uo7PKGQ2ZxUSF+YA+xuo45MP89fAczeJyjrOtf+8AEdlBFkvgAAAA==[0m[Pipeline] }
+[8mha:////4CDmrRUcErdRJdu9os+TqRhwPs89UJW3kSOfDVS+4y8lAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIioKBAqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw8pWvI/vgAAAA==[0m[Pipeline] // stage
+[8mha:////4CM0qlKDq4vsfCnr8GB1RkCZHL9pU4TiHT3ASJWUj7V3AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohURWyIqWvUhROEJoSk0f8lSUknTsTVuAOBSkx4sGxL1nu+oAoejuQ1swoHg6E3bHSTzokl8sPFUWKWzqwnDOQU61TqSKp2qR1FBYuKElYc1gp7R8GgjrDhVtxF7QTq+hR93g4cSiNv8ICCZ3IUPn7L7GF7nWQg/HH+AmAeI5RNk223/zyrN+/1G3zCAAAA[0m[Pipeline] stage
+[8mha:////4EQ6CMcb2C/rokyHCUZtg+/E5WQSR0nhoi42aiU+at/DAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUQjAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD/hYjrHCAAAA[0m[Pipeline] { (Health Check)
+Stage "Health Check" skipped due to earlier failure(s)
+[8mha:////4CCPXGANVJbX90ud8yl2wPQBloSC/qG2g8miOfU6OZBfAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiIUGDqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFBu95/avQF1+RyqvgAAAA==[0m[Pipeline] }
+[8mha:////4BcBlFkVUxyfH5uLWsjF7A5+YAV2nlFNTKBDtjmjw7jhAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiISQKRJXWcsMLTGyME+vO2A5JxYv4Gn8gEImKLVY728zzBcsU4cjRYmuoc5Qah8H3dlo4cOwungds+YwNU2JvUJpBsjb1jJKzgTlFCQsBK0ON5+TIZliLVt1V5RXZ6pTj9B0ElE7f4AGFmMxZxfyFMcLm2uvE9PP8FcAYQoZyu//U7g1GGkcWvgAAAA==[0m[Pipeline] // stage
+[8mha:////4CuvqU3yvK2DNw1oG3dqHlIuAtfgETNTEDGedKHmSkeoAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKiUCEhqrRWGl5gYmOcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThwM9poGS7Gz6N1o8sKJw3B1PGHPF+yYIjuNrZ5aVrpZsOWkYUlRwkrARlPnOFoyCbailw9ZOUmmOqeQv6OA0qo7PKEQ2ZxkSF+YA+xuo4pMP89fAczeJyj3h1x1/QHfD1a8vgAAAA==[0m[Pipeline] }
+[8mha:////4Km+YLHrs2w+DG3oC39zV8YyDOaiGgRYj/q6mRm4K28GAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICdAilorXc8AKTGOPEugu2g1PxIr7GH7CIRMUWq51t5vWGZfBQszfYaeothcbi4EaTFyb2/dVxwo4v2DAFdhqlTpJbfZpRctQwpyhhIWClqXEcLJkIa9Gph6qcIlOdo8/fUUBp2zs8oRDZHJWPX5g8bG5jG5h+nr8CmIYhQrk/5NptP+zsDQC+AAAA[0m[Pipeline] // withEnv
+[8mha:////4Jlk5aRfq6Mq4q8LOEsb98MD1lMUk/OX5aUC8XxP6nDiAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMJBgg5R0VppeIFJjHFi3QX7QlLxIr7GH4iIRMVWO9PM641lijhydKqx1HpKlVdd6N301MCxvQYeVMMXVTElDlaVdii5tqcZSxaLeVmOhcbKUhU4eXKCtW7MwxTBkCvOEid30Mh9fccTmZ7KYqJ8YYzY3Po6Mf06fwMYu06Q77aCbP8BjoqNn70AAAA=[0m[Pipeline] }
+[8mha:////4JY8Qe3BhRarGK4ny89ViiqqYJPpM1NkVUPxQ9tnIIXkAAAAoh+LCAAAAAAAAP9tjbEOgjAURS8YB1dHP6LEMBon14bFL6hQa6F5D9uHMPlF/pr/IJHEyTvdc5bzemOdIo4cnWotdZ5S7VUfBjc/NXLsroFH1fJF1UyJg1WVHStu7GnBisViWZZjpbGxVAdOnpxgq1vzMEUw5IqzxNkdNHLf3PFEpueymChfmCJ2t6FJTL/O3wCmvhfk5V6QlR+dNok8vQAAAA==[0m[Pipeline] // node
+[8mha:////4KgMsopX/gwfbeBA8l86vL3YYz9emWLWu8EKbsgZjQ42AAAAoh+LCAAAAAAAAP9tjbEOgjAURS8YB1dHP6IkOBon14bFL6hQa6F5D9uHMPlF/pr/IJHEyTvdc5bzemOdIo4cnWotdZ5S7VUfBjc/NXLsroFH1fJF1UyJg1WVHStu7GnBisViWZZjpbGxVAdOnpxgq1vzMEUw5IqzxNkdNHLf3PFEpueymChfmCJ2t6FJTL/O3wCmvhfk+1KQlR/bfC4MvQAAAA==[0m[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

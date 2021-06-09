@@ -1,0 +1,134 @@
+May 28, 2021 8:03:13 PM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+2021-05-28 20:03:13,678 INFO o.j.r.PluginManagerCMD: Command is: install-for-jmx
+2021-05-28 20:03:13,732 INFO o.j.r.JARSourceHTTP: Requesting https://jmeter-plugins.org/repo/?installID=linux-2093686fb997ce19d64f75287245f1ac-nongui
+2021-05-28 20:03:15,508 INFO o.j.r.PluginManager: Plugins Status: [jpgc-functions=2.1, jpgc-casutg=2.9, jpgc-plugins-manager=plugins-manager, jmeter-core=5.2.1, jmeter-ftp=5.2.1, jmeter-http=5.2.1, jmeter-jdbc=5.2.1, jmeter-jms=5.2.1, jmeter-junit=5.2.1, jmeter-java=5.2.1, jmeter-ldap=5.2.1, jmeter-mail=5.2.1, jmeter-mongodb=5.2.1, jmeter-native=5.2.1, jmeter-tcp=5.2.1, jmeter-components=5.2.1]
+2021-05-28 20:03:15,511 INFO o.j.r.PluginManagerCMD: Params line is: /home/octoperf/apache-jmeter-5.2.1/scenario.jmx
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/home/octoperf/apache-jmeter-5.2.1/lib/xstream-1.4.11.jar) to field java.util.TreeMap.comparator
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2021-05-28 20:03:15,837 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2021-05-28 20:03:15,851 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2021-05-28 20:03:15,855 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2021-05-28 20:03:15,892 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2021-05-28 20:03:15,896 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
+2021-05-28 20:03:15,984 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:15,984 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:15,984 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:15,984 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:15,984 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2021-05-28 20:03:15,985 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2021-05-28 20:03:16,000 INFO o.j.r.PluginManager: Finishing without changes
+2021-05-28 20:03:19,075 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2021-05-28 20:03:19,105 INFO o.a.j.JMeter: Loading user properties from: /home/octoperf/apache-jmeter-5.2.1/bin/user.properties
+2021-05-28 20:03:19,106 INFO o.a.j.JMeter: Loading system properties from: /home/octoperf/apache-jmeter-5.2.1/bin/system.properties
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: Copyright (c) 1998-2019 The Apache Software Foundation
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: Version 5.2.1
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: java.version=11.0.10
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: os.name=Linux
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: os.arch=amd64
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: os.version=5.4.0-1043-azure
+2021-05-28 20:03:19,108 INFO o.a.j.JMeter: file.encoding=UTF-8
+2021-05-28 20:03:19,109 INFO o.a.j.JMeter: java.awt.headless=true
+2021-05-28 20:03:19,109 INFO o.a.j.JMeter: Max memory     =301989888
+2021-05-28 20:03:19,109 INFO o.a.j.JMeter: Available Processors =4
+2021-05-28 20:03:19,118 INFO o.a.j.JMeter: Default Locale=English (United States)
+2021-05-28 20:03:19,118 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2021-05-28 20:03:19,118 INFO o.a.j.JMeter: JMeterHome=/home/octoperf/apache-jmeter-5.2.1
+2021-05-28 20:03:19,118 INFO o.a.j.JMeter: user.dir  =/home/octoperf/apache-jmeter-5.2.1
+2021-05-28 20:03:19,118 INFO o.a.j.JMeter: PWD       =/home/octoperf/apache-jmeter-5.2.1
+2021-05-28 20:03:19,119 INFO o.a.j.JMeter: IP: 172.17.0.3 Name: 00005031df02 FullName: 00005031df02
+2021-05-28 20:03:19,124 INFO o.a.j.s.FileServer: Default base='/home/octoperf/apache-jmeter-5.2.1'
+2021-05-28 20:03:19,126 INFO o.a.j.s.FileServer: Set new base='/home/octoperf/apache-jmeter-5.2.1'
+2021-05-28 20:03:19,324 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2021-05-28 20:03:19,339 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2021-05-28 20:03:19,345 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2021-05-28 20:03:19,350 INFO o.a.j.s.SaveService: Loading file: scenario.jmx
+2021-05-28 20:03:19,421 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-05-28 20:03:19,428 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2021-05-28 20:03:19,431 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2021-05-28 20:03:19,458 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2021-05-28 20:03:19,472 INFO o.a.j.JMeter: Creating summariser <summary>
+2021-05-28 20:03:19,477 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2021-05-28 20:03:19,478 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2021-05-28 20:03:19,480 INFO o.a.j.JMeter: Starting Beanshell server (19913,./extras/startup.bsh)
+2021-05-28 20:03:19,491 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2021-05-28 20:03:19,492 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2021-05-28 20:03:19,899 INFO c.o.JMeterPlugin: Test Mode = STANDARD
+2021-05-28 20:03:20,767 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
+2021-05-28 20:03:20,768 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
+2021-05-28 20:03:20,795 INFO o.a.j.JMeter: Running test (1622232200795)
+2021-05-28 20:03:20,838 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : tSyStHkBtTk-ai5wvKut
+2021-05-28 20:03:20,839 INFO o.a.j.e.StandardJMeterEngine: Starting 20 threads for group tSyStHkBtTk-ai5wvKut.
+2021-05-28 20:03:20,839 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2021-05-28 20:03:20,840 INFO k.a.j.t.AbstractSimpleThreadGroup: Starting thread group number 1 threads 20
+2021-05-28 20:03:20,898 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
+2021-05-28 20:03:20,902 INFO o.a.j.u.SSLManager: KeyStore created OK
+2021-05-28 20:03:20,902 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
+2021-05-28 20:03:20,916 INFO k.a.j.t.AbstractSimpleThreadGroup: Started thread group number 1
+2021-05-28 20:03:20,916 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2021-05-28 20:03:21,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-1
+2021-05-28 20:03:21,841 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-2
+2021-05-28 20:03:22,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-3
+2021-05-28 20:03:22,358 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = 00005031df02
+2021-05-28 20:03:22,364 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2021-05-28 20:03:22,366 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2021-05-28 20:03:22,366 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2021-05-28 20:03:22,366 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2021-05-28 20:03:22,366 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2021-05-28 20:03:22,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-4
+2021-05-28 20:03:23,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-5
+2021-05-28 20:03:23,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-6
+2021-05-28 20:03:24,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-7
+2021-05-28 20:03:24,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-8
+2021-05-28 20:03:25,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-9
+2021-05-28 20:03:25,841 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-10
+2021-05-28 20:03:26,341 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-11
+2021-05-28 20:03:26,841 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-12
+2021-05-28 20:03:27,341 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-13
+2021-05-28 20:03:27,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-14
+2021-05-28 20:03:28,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-15
+2021-05-28 20:03:28,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-16
+2021-05-28 20:03:29,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-17
+2021-05-28 20:03:29,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-18
+2021-05-28 20:03:30,107 INFO o.a.j.r.Summariser: summary +     55 in 00:00:09 =    5.9/s Avg:   272 Min:   259 Max:   346 Err:     0 (0.00%) Active: 18 Started: 18 Finished: 0
+2021-05-28 20:03:30,340 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-19
+2021-05-28 20:03:30,840 INFO o.a.j.t.JMeterThread: Thread started: tSyStHkBtTk-ai5wvKut 1-20
+2021-05-28 20:04:00,083 INFO o.a.j.r.Summariser: summary +    472 in 00:00:30 =   15.7/s Avg:   265 Min:   258 Max:   307 Err:     0 (0.00%) Active: 20 Started: 20 Finished: 0
+2021-05-28 20:04:00,084 INFO o.a.j.r.Summariser: summary =    527 in 00:00:39 =   13.4/s Avg:   265 Min:   258 Max:   346 Err:     0 (0.00%)
+2021-05-28 20:04:19,841 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-1
+2021-05-28 20:04:19,868 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-19
+2021-05-28 20:04:19,960 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-4
+2021-05-28 20:04:20,060 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-2
+2021-05-28 20:04:20,063 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-12
+2021-05-28 20:04:20,063 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-17
+2021-05-28 20:04:20,102 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-7
+2021-05-28 20:04:20,199 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-15
+2021-05-28 20:04:20,213 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-20
+2021-05-28 20:04:20,313 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-5
+2021-05-28 20:04:20,316 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-10
+2021-05-28 20:04:20,448 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-18
+2021-05-28 20:04:20,462 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-13
+2021-05-28 20:04:20,587 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-8
+2021-05-28 20:04:20,629 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-3
+2021-05-28 20:04:20,697 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-16
+2021-05-28 20:04:20,933 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: tSyStHkBtTk-ai5wvKut 1-11
+2021-05-28 20:04:20,934 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-11
+2021-05-28 20:04:20,937 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: tSyStHkBtTk-ai5wvKut 1-6
+2021-05-28 20:04:20,937 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-6
+2021-05-28 20:04:20,959 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: tSyStHkBtTk-ai5wvKut 1-14
+2021-05-28 20:04:20,960 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-14
+2021-05-28 20:04:21,060 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: tSyStHkBtTk-ai5wvKut 1-9
+2021-05-28 20:04:21,060 INFO o.a.j.t.JMeterThread: Thread finished: tSyStHkBtTk-ai5wvKut 1-9
+2021-05-28 20:04:21,060 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2021-05-28 20:04:21,071 INFO o.a.j.r.Summariser: summary +    330 in 00:00:21 =   15.7/s Avg:   266 Min:   258 Max:   304 Err:     0 (0.00%) Active: 0 Started: 20 Finished: 20
+2021-05-28 20:04:21,071 INFO o.a.j.r.Summariser: summary =    857 in 00:01:00 =   14.2/s Avg:   265 Min:   258 Max:   346 Err:     0 (0.00%)
+2021-05-28 20:04:21,072 INFO o.a.j.e.StandardJMeterEngine: Forced JVM shutdown requested at end of test

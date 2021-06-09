@@ -1,0 +1,20 @@
+commit b8d7fe194012c6dec15e1ded0a80b5cb7fff8833
+tree 84e023b0c7663dfb05a5209b75e8765a0fdf6645
+parent 0312f785b454b373a7d031fda7c4c6bfa4b368c5
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:57:36 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:57:36 -0400
+
+    I'm an idiot
+
+
+:100644 100644 13a149ece6cbdfdb5cdd3cbf9b24c0d0930df3b6 1fd36f2dc76c281cc932e94e17e1db85514f0874 M	Jenkinsfile
+commit 0312f785b454b373a7d031fda7c4c6bfa4b368c5
+tree d3b44806279fd6e696b5e125970bf4d444d940dc
+parent 554a951f572d7a94bb71960b46172edc2090ed0c
+author Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:55:59 -0400
+committer Ernest Kim <52210251+ernestk86@users.noreply.github.com> 2021-05-27 15:55:59 -0400
+
+    Bash scripts in groovy
+
+
+:100644 100644 8e65283e833672e3e2e6836ccb59dbd6507be643 13a149ece6cbdfdb5cdd3cbf9b24c0d0930df3b6 M	Jenkinsfile

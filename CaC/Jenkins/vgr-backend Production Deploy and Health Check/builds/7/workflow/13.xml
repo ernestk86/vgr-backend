@@ -1,0 +1,19 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<Tag plugin="workflow-support@3.8">
+  <node class="cps.n.StepStartNode" plugin="workflow-cps@2.92">
+    <parentIds>
+      <string>12</string>
+    </parentIds>
+    <id>13</id>
+    <descriptorId>org.jenkinsci.plugins.workflow.support.steps.StageStep</descriptorId>
+  </node>
+  <actions>
+    <wf.a.BodyInvocationAction plugin="workflow-api@2.42"/>
+    <wf.a.LabelAction plugin="workflow-api@2.42">
+      <displayName>Scale down Canary</displayName>
+    </wf.a.LabelAction>
+    <wf.a.TimingAction plugin="workflow-api@2.42">
+      <startTime>1622147217474</startTime>
+    </wf.a.TimingAction>
+  </actions>
+</Tag>

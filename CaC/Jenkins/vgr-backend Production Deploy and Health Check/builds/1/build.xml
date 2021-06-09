@@ -1,0 +1,485 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-build plugin="workflow-job@2.40">
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UpstreamCause>
+            <upstreamProject>vgr-backend Canary and Load Test</upstreamProject>
+            <upstreamUrl>job/vgr-backend%20Canary%20and%20Load%20Test/</upstreamUrl>
+            <upstreamBuild>7</upstreamBuild>
+            <upstreamCauses>
+              <hudson.model.Cause_-UserIdCause>
+                <userId>admin</userId>
+              </hudson.model.Cause_-UserIdCause>
+            </upstreamCauses>
+          </hudson.model.Cause_-UpstreamCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="workflow-cps-global-lib@2.19">
+      <libraries/>
+    </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction plugin="pipeline-model-definition@1.8.4">
+      <stagesUUID>3457dcca-506c-4293-a001-1e039c4cec9d</stagesUUID>
+      <pipelineDefs>
+        <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTPipelineDef plugin="pipeline-model-api@1.8.4">
+          <stages>
+            <stages>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Scale down Canary</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                        <name>sh</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>script</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">curl --request PUT --url http://127.0.0.1:8080/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header &apos;content-type: application/json&apos; 
+                    --data &apos;{
+                                &quot;apiVersion&quot;: &quot;apps/v1&quot;,
+                                &quot;kind&quot;: &quot;Deployment&quot;,
+                                &quot;metadata&quot;: {
+                                    &quot;name&quot;: &quot;vgr-backend-canary&quot;,
+                                    &quot;labels&quot;: {
+                                        &quot;app&quot;: &quot;vgr-backend-canary&quot;
+                                    }
+                                },
+                                &quot;spec&quot;: {
+                                    &quot;replicas&quot;: 0,
+                                    &quot;revisionHistoryLimit&quot;: 3,
+                                    &quot;selector&quot;: {
+                                        &quot;matchLabels&quot;: {
+                                            &quot;app&quot;: &quot;vgr-backend-canary&quot;,
+                                            &quot;track&quot;: &quot;stable&quot;
+                                        }
+                                    },
+                                    &quot;template&quot;: {
+                                        &quot;metadata&quot;: {
+                                            &quot;labels&quot;: {
+                                            &quot;app&quot;: &quot;vgr-backend-canary&quot;,
+                                            &quot;track&quot;: &quot;stable&quot;
+                                            }
+                                        },
+                                        &quot;spec&quot;: {
+                                            &quot;volumes&quot;: null,
+                                            &quot;containers&quot;: [
+                                            {
+                                                &quot;name&quot;: &quot;vgr-backend-canary&quot;,
+                                                &quot;image&quot;: &quot;ernestk86/vgr-backend-canary:latest&quot;,
+                                                &quot;ports&quot;: [
+                                                    {
+                                                        &quot;containerPort&quot;: 8885
+                                                    }
+                                                ],
+                                                &quot;imagePullPolicy&quot;: &quot;Always&quot;,
+                                                &quot;env&quot;: [
+                                                    {
+                                                        &quot;name&quot;: &quot;DB_URL&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;DB_URL&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        &quot;name&quot;: &quot;DB_USERNAME&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;DB_USERNAME&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        &quot;name&quot;: &quot;DB_PASSWORD&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;DB_PASSWORD&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        &quot;name&quot;: &quot;AWS_SES_HOST&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;AWS_SES_HOST&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        &quot;name&quot;: &quot;AWS_SES_USERNAME&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;AWS_SES_USERNAME&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        &quot;name&quot;: &quot;AWS_SES_PASSWORD&quot;,
+                                                        &quot;valueFrom&quot;: {
+                                                        &quot;secretKeyRef&quot;: {
+                                                            &quot;name&quot;: &quot;vgr-backend-creds&quot;,
+                                                            &quot;key&quot;: &quot;AWS_SES_PASSWORD&quot;
+                                                        }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }&apos;</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Promote image to Production</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                        <name>sh</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>script</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">docker pull ernestk86/vgr-backend-canary:latest</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                        <name>sh</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>script</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                        <name>sh</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>script</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">docker push ernestk86/vgr-backend:production</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Health Check</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                        <name>script</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>scriptBlock</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">try {
+                        String check = sh &apos;curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \&apos;content-type: application/json\&apos; --data \&apos;{\&quot;username\&quot;: \&quot;admin\&quot;, \&quot;password\&quot;: \&quot;password\&quot;}\&apos; | grep error&apos;
+                        if (check.length() &gt; 0) {
+                            throw error
+                        }
+                    } catch (error) {
+                        emailext to: &apos;ekim86@gmail.com&apos;, subject: &apos;vgr-backend Health Check Failed&apos;, body: &apos;Health checked failed for vgr-backend CI/CD Pipeline.&apos;
+                    }</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+            </stages>
+            <uuid>3457dcca-506c-4293-a001-1e039c4cec9d</uuid>
+          </stages>
+          <agent>
+            <agentType>
+              <key>any</key>
+            </agentType>
+          </agent>
+        </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTPipelineDef>
+      </pipelineDefs>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction>
+    <hudson.plugins.git.util.BuildData plugin="git@4.7.1">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/main</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@3.7.1">
+              <sha1>65dc5784ab669211749fd8062fd7024e8e922707</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/main</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>1</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>https://github.com/ernestk86/vgr-backend.git</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState plugin="workflow-scm-step@2.12">
+      <revisionStates>
+        <entry>
+          <string>git https://github.com/ernestk86/vgr-backend.git</string>
+          <hudson.scm.SCMRevisionState_-None/>
+        </entry>
+      </revisionStates>
+    </org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState>
+  </actions>
+  <queueId>87</queueId>
+  <timestamp>1622143920716</timestamp>
+  <startTime>1622143920718</startTime>
+  <result>FAILURE</result>
+  <duration>8728</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
+    <result>FAILURE</result>
+    <script>pipeline {
+    agent any
+
+    stages {
+        
+        stage(&apos;Scale down Canary&apos;) {
+            steps {
+                sh &apos;&apos;&apos;curl --request PUT --url http://127.0.0.1:8080/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary --header \&apos;content-type: application/json\&apos; 
+                    --data \&apos;{
+                                \&quot;apiVersion\&quot;: \&quot;apps/v1\&quot;,
+                                \&quot;kind\&quot;: \&quot;Deployment\&quot;,
+                                \&quot;metadata\&quot;: {
+                                    \&quot;name\&quot;: \&quot;vgr-backend-canary\&quot;,
+                                    \&quot;labels\&quot;: {
+                                        \&quot;app\&quot;: \&quot;vgr-backend-canary\&quot;
+                                    }
+                                },
+                                \&quot;spec\&quot;: {
+                                    \&quot;replicas\&quot;: 0,
+                                    \&quot;revisionHistoryLimit\&quot;: 3,
+                                    \&quot;selector\&quot;: {
+                                        \&quot;matchLabels\&quot;: {
+                                            \&quot;app\&quot;: \&quot;vgr-backend-canary\&quot;,
+                                            \&quot;track\&quot;: \&quot;stable\&quot;
+                                        }
+                                    },
+                                    \&quot;template\&quot;: {
+                                        \&quot;metadata\&quot;: {
+                                            \&quot;labels\&quot;: {
+                                            \&quot;app\&quot;: \&quot;vgr-backend-canary\&quot;,
+                                            \&quot;track\&quot;: \&quot;stable\&quot;
+                                            }
+                                        },
+                                        \&quot;spec\&quot;: {
+                                            \&quot;volumes\&quot;: null,
+                                            \&quot;containers\&quot;: [
+                                            {
+                                                \&quot;name\&quot;: \&quot;vgr-backend-canary\&quot;,
+                                                \&quot;image\&quot;: \&quot;ernestk86/vgr-backend-canary:latest\&quot;,
+                                                \&quot;ports\&quot;: [
+                                                    {
+                                                        \&quot;containerPort\&quot;: 8885
+                                                    }
+                                                ],
+                                                \&quot;imagePullPolicy\&quot;: \&quot;Always\&quot;,
+                                                \&quot;env\&quot;: [
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;DB_URL\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;DB_URL\&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;DB_USERNAME\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;DB_USERNAME\&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;DB_PASSWORD\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;DB_PASSWORD\&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;AWS_SES_HOST\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;AWS_SES_HOST\&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;AWS_SES_USERNAME\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;AWS_SES_USERNAME\&quot;
+                                                        }
+                                                        }
+                                                    },
+                                                    {
+                                                        \&quot;name\&quot;: \&quot;AWS_SES_PASSWORD\&quot;,
+                                                        \&quot;valueFrom\&quot;: {
+                                                        \&quot;secretKeyRef\&quot;: {
+                                                            \&quot;name\&quot;: \&quot;vgr-backend-creds\&quot;,
+                                                            \&quot;key\&quot;: \&quot;AWS_SES_PASSWORD\&quot;
+                                                        }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }\&apos;&apos;&apos;&apos;
+
+            }
+        }
+
+        stage(&apos;Promote image to Production&apos;) {
+            steps {
+                sh &apos;docker pull ernestk86/vgr-backend-canary:latest&apos;
+                sh &apos;docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production&apos;
+                sh &apos;docker push ernestk86/vgr-backend:production&apos;
+            }
+        }
+        
+        stage(&apos;Health Check&apos;) {
+            steps {
+                script {
+                    try {
+                        String check = sh &apos;curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \&apos;content-type: application/json\&apos; --data \&apos;{\&quot;username\&quot;: \&quot;admin\&quot;, \&quot;password\&quot;: \&quot;password\&quot;}\&apos; | grep error&apos;
+                        if (check.length() &gt; 0) {
+                            throw error
+                        }
+                    } catch (error) {
+                        emailext to: &apos;ekim86@gmail.com&apos;, subject: &apos;vgr-backend Health Check Failed&apos;, body: &apos;Health checked failed for vgr-backend CI/CD Pipeline.&apos;
+                    }
+                }
+            }
+        }
+    }
+}
+</script>
+    <loadedScripts class="map"/>
+    <durabilityHint>MAX_SURVIVABILITY</durabilityHint>
+    <timings class="map">
+      <entry>
+        <string>flowNode</string>
+        <long>187890772</long>
+      </entry>
+      <entry>
+        <string>classLoad</string>
+        <long>7221100684</long>
+      </entry>
+      <entry>
+        <string>run</string>
+        <long>5589128840</long>
+      </entry>
+      <entry>
+        <string>parse</string>
+        <long>1564085732</long>
+      </entry>
+      <entry>
+        <string>saveProgram</string>
+        <long>754164396</long>
+      </entry>
+    </timings>
+    <sandbox>true</sandbox>
+    <iota>29</iota>
+    <head>1:29</head>
+    <done>true</done>
+    <resumeBlocked>false</resumeBlocked>
+  </execution>
+  <completed>true</completed>
+  <checkouts class="hudson.util.PersistedList">
+    <org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+      <scm class="hudson.plugins.git.GitSCM" plugin="git@4.7.1">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>https://github.com/ernestk86/vgr-backend.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/main</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="empty-list"/>
+        <extensions/>
+      </scm>
+      <node></node>
+      <workspace>/home/ec2-user/.jenkins/workspace/vgr-backend Production Deploy and Health Check</workspace>
+      <changelogFile>/home/ec2-user/.jenkins/jobs/vgr-backend Production Deploy and Health Check/builds/1/changelog2861981116949152809.xml</changelogFile>
+      <pollingBaseline class="hudson.scm.SCMRevisionState$None" reference="../../../actions/org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState/revisionStates/entry/hudson.scm.SCMRevisionState_-None"/>
+    </org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+  </checkouts>
+</flow-build>
