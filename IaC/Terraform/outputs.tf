@@ -1,6 +1,11 @@
 output "instance_public_ip" {
-  description = "ID of the EC2 instance"
+  description = "Public ip of the EC2 instance"
   value       = aws_instance.jenkinsServer.public_ip
+}
+
+output "instance_public_dns" {
+  description = "Public dns of the EC2 instance"
+  value       = aws_instance.jenkinsServer.public_dns
 }
 
 output "database_endpoint" {
