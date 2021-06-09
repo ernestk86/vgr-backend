@@ -28,7 +28,7 @@
     - name: Disable setup wizard
       ansible.builtin.command: 
         # cmd: sudo bash -c "echo 'JENKINS_JAVA_OPTIONS=\"-Djenkins.install.runSetupWizard=false\"' >> /etc/sysconfig/jenkins"
-        cmd: "echo hello"
+        cmd: echo hello
  
     # - name: Start & Enable Jenkins
     #   systemd:
