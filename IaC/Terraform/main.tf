@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "vgr-backend"
     workspaces {
-      name = "Production"
+      name = "vgr-backend"
     }
   }
   required_providers {
@@ -20,7 +20,7 @@ provider "aws" {
   region  = "us-east-2"
 }
 
-resource "aws_db_instance" "database" {
+/* resource "aws_db_instance" "database" {
   allocated_storage = 10
   max_allocated_storage = 20
   engine = "postgres"
@@ -31,7 +31,7 @@ resource "aws_db_instance" "database" {
   password = var.db_password
   skip_final_snapshot = true
   vpc_security_group_ids = tolist(["sg-0825b33512368dbe5"])
-}
+} */
 
 resource "aws_instance" "jenkinsServer" {
   ami           = "ami-077e31c4939f6a2f3"

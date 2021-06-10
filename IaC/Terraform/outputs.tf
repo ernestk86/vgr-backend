@@ -8,7 +8,7 @@ output "instance_public_dns" {
   value       = aws_instance.jenkinsServer.public_dns
 }
 
-output "database_endpoint" {
+/* output "database_endpoint" {
   description = "Endpoint for database"
   value = aws_db_instance.database.endpoint
 }
@@ -21,4 +21,4 @@ output "database_port" {
 output "database_username" {
   description = "Username of database"
   value = aws_db_instance.database.username
-}
+} */

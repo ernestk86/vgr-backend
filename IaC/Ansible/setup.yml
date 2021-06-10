@@ -1,0 +1,43 @@
+---
+- name: Grab DNS
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Grab DNS
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns
+      changed_when: false
+      register: DNS
+
+# - name: Setup proper tools
+#   hosts: vgrbackend
+#   gather_facts: false
+#   become: true
+#   tasks:
+#     - name: Install Docker
+#       yum:
+#         name: docker
+
+#     - name: Start & Enable Docker
+#       systemd:
+#         name: docker
+#         state: started
+#         enabled: true
+
+#     - name: Install Pip2
+#       yum:
+#         name: pip
+    
+#     - name: Ensure python-jenkins is installed
+#       pip:
+#         executable: /usr/bin/pip
+#         name: python-jenkins
+
+# - name: Unlock Docker for Jenkins access
+#   hosts: vgrbackend
+#   gather_facts: false
+#   become: true
+#   tasks:
+#     - name: Unlock Docker.sock
+#       command:
+#         cmd: sudo chmod 666 /var/run/docker.sock

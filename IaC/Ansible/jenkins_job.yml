@@ -1,0 +1,14 @@
+---
+- name: Create Jenkins Job
+  hosts: vgrbackend
+  gather_facts: false
+  become: true
+  tasks:
+    
+    - name: Create a jenkins job using basic authentication
+      community.general.jenkins_job:
+        config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend CICD/config.xml') }}"
+        name: Test Job
+        password: "{{init_password.stdout}}"
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        user: admin

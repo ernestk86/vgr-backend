@@ -1,0 +1,70 @@
+---
+- name: Install Jenkins Plugins
+  hosts: vgrbackend
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Restart Jenkins
+      service:
+        name: jenkins
+        state: restarted
+    
+    - name: Pause a minute
+      pause:
+        minutes: 1
+
+    - name: Install git
+      community.general.jenkins_plugin:
+        name: git
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install github
+      community.general.jenkins_plugin:
+        name: github
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install octoperf
+      community.general.jenkins_plugin:
+        name: octoperf
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install generic webhook trigger
+      community.general.jenkins_plugin:
+        name: generic-webhook-trigger
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install docker plugin for Jenkins
+      community.general.jenkins_plugin:
+        name: docker-plugin
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install email-extension
+      community.general.jenkins_plugin:
+        name: email-ext
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install performance report
+      community.general.jenkins_plugin:
+        name: performance
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"
+
+    - name: Install pipeline
+      community.general.jenkins_plugin:
+        name: build-pipeline-plugin
+        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        url_username: admin
+        url_password: "{{init_password.stdout}}"                

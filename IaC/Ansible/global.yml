@@ -1,0 +1,5 @@
+---
+# Combine multiple playbook
+  - import_playbook: setup.yml
+  - import_playbook: install_jenkins.yml
+  - import_playbook: jenkins_plugins.yml
