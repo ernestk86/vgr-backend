@@ -1,0 +1,42 @@
+---
+- name: Grab Variables
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Grab git config
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/hudson.plugins.git.GitTool.xml
+      changed_when: false
+      register: GIT_TOOL_CONFIG
+
+    - name: Grab docker config
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+      changed_when: false
+      register: DOCKER_TOOL_CONFIG
+
+- name: Set Jenkins environment variables
+  hosts: vgrbackend
+  gather_facts: false
+  become: true
+  tasks:
+    # - name: Restart Jenkins
+    #   systemd:
+    #     name: jenkins
+    #     state: restarted
+    #     enabled: true
+    
+    - name: Delete old git tool path
+      command:
+        cmd: sudo rm /var/lib/jenkins/hudson.plugins.git.GitTool.xml
+    
+    - name: Configure git tool path
+      command:
+        cmd: sudo bash -c "echo \"{{ hostvars['localhost'].GIT_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/hudson.plugins.git.GitTool.xml"
+    
+    - name: Delete old git tool path
+      command:
+        cmd: sudo rm /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+    
+    - name: Configure git tool path
+      command:
+        cmd: sudo bash -c "echo \"{{ hostvars['localhost'].DOCKER_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml"
