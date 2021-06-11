@@ -1,10 +1,11 @@
 ---
-- name: Set Jenkins environment variables
+
+
+- name: Configure Jenkins
   hosts: vgrbackend
   gather_facts: false
   become: true
   tasks:
-    
     - name: Set env variables
       community.general.jenkins_script:
         user: admin
@@ -76,3 +77,11 @@
           def new_cloud = new DockerCloud("docker", new_docker_api, empty_list)
           instance.clouds.add(new_cloud)
           instance.save()
+
+    - name: Delete old docker tool path
+      command:
+        cmd: sudo rm /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+    
+    - name: Configure docker tool path
+      command:
+        cmd: sudo bash -c "echo \"{{ hostvars['localhost'].DOCKER_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml"

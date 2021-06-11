@@ -4,21 +4,26 @@
   gather_facts: false
   become: true
   tasks:
-    - name: Grab git config
-      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/hudson.plugins.git.GitTool.xml
+    - name: Grab DNS
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/new_dns
       changed_when: false
-      register: GIT_TOOL_CONFIG
+      register: DNS
 
-    - name: Grab docker config
-      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+    - name: Grab Github Token
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/ght
       changed_when: false
-      register: DOCKER_TOOL_CONFIG
+      register: GITHUB_ACCESS_TOKEN
 
-- name: Set Jenkins environment variables
-  hosts: vgrbackend
-  gather_facts: false
-  become: true
-  tasks:
+    - name: Add Github Webhook
+      command:
+        cmd: 'curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer "{{GITHUB_ACCESS_TOKEN.stdout}}"" https://api.github.com/repos/ernestk86/vgr-backend/hooks -d '{"config":{"url":"http://ec2-3-129-128-136.us-east-2.compute.amazonaws.com:8080//github-webhook/TESTING"}}''
+        # cmd: 'echo hello'
+
+# - name: Set Jenkins environment variables
+#   hosts: vgrbackend
+#   gather_facts: false
+#   become: true
+#   tasks:
     # - name: Restart Jenkins
     #   systemd:
     #     name: jenkins
@@ -33,10 +38,10 @@
     #   command:
     #     cmd: sudo bash -c "echo \"{{ hostvars['localhost'].GIT_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/hudson.plugins.git.GitTool.xml"
     
-    - name: Delete old git tool path
-      command:
-        cmd: sudo rm /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+    # - name: Delete old docker tool path
+    #   command:
+    #     cmd: sudo rm /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
     
-    - name: Configure git tool path
-      command:
-        cmd: sudo bash -c "echo \"{{ hostvars['localhost'].DOCKER_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml"
+    # - name: Configure docker tool path
+    #   command:
+    #     cmd: sudo bash -c "echo \"{{ hostvars['localhost'].DOCKER_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml"
