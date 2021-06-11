@@ -25,13 +25,13 @@
     #     state: restarted
     #     enabled: true
     
-    - name: Delete old git tool path
-      command:
-        cmd: sudo rm /var/lib/jenkins/hudson.plugins.git.GitTool.xml
+    # - name: Delete old git tool path
+    #   command:
+    #     cmd: sudo rm /var/lib/jenkins/hudson.plugins.git.GitTool.xml
     
-    - name: Configure git tool path
-      command:
-        cmd: sudo bash -c "echo \"{{ hostvars['localhost'].GIT_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/hudson.plugins.git.GitTool.xml"
+    # - name: Configure git tool path
+    #   command:
+    #     cmd: sudo bash -c "echo \"{{ hostvars['localhost'].GIT_TOOL_CONFIG.stdout }}\" >> /var/lib/jenkins/hudson.plugins.git.GitTool.xml"
     
     - name: Delete old git tool path
       command:
