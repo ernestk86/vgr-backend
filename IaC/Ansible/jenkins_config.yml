@@ -1,0 +1,78 @@
+---
+- name: Set Jenkins environment variables
+  hosts: vgrbackend
+  gather_facts: false
+  become: true
+  tasks:
+    
+    - name: Set env variables
+      community.general.jenkins_script:
+        user: admin
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        script: |
+          import jenkins.*
+          import jenkins.model.*
+          import hudson.*
+          import hudson.model.*
+          instance = Jenkins.getInstance()
+          globalNodeProperties = instance.getGlobalNodeProperties()
+          envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
+          envVars = null
+          if ( envVarsNodePropertyList == null || envVarsNodePropertyList.size() == 0 ) {
+            newEnvVarsNodeProperty = new hudson.slaves.EnvironmentVariablesNodeProperty();
+            globalNodeProperties.add(newEnvVarsNodeProperty)
+            envVars = newEnvVarsNodeProperty.getEnvVars()
+          } else {
+            envVars = envVarsNodePropertyList.get(0).getEnvVars()  
+          }
+          envVars.put("DOCKERHUB_USERNAME", "{{ hostvars['localhost'].DOCKERHUB_USERNAME.stdout }}")
+          envVars.put("DOCKERHUB_PASSWORD", "{{ hostvars['localhost'].DOCKERHUB_PASSWORD.stdout }}")
+          envVars.put("GITHUB_ACCESS_TOKEN", "{{ hostvars['localhost'].GITHUB_ACCESS_TOKEN.stdout }}")
+          instance.save()
+
+    - name: Configure Email plugin
+      community.general.jenkins_script:
+        user: admin
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        script: |
+          import jenkins.*  
+          import hudson.plugins.emailext.*
+          import hudson.model.*
+          import hudson.tools.*
+          import hudson.util.Secret
+          import org.jenkinsci.plugins.octoperf.*
+          def instance = Jenkins.getInstance()
+          def mail_account = instance.getDescriptor("hudson.plugins.emailext.ExtendedEmailPublisher")
+          mail_account.smtpHost="smtp.gmail.com"
+          mail_account.smtpPort="465"
+          mail_account.smtpAuthUsername="{{ hostvars['localhost'].OCTOPERF_USERNAME.stdout }}"
+          mail_account.smtpAuthPassword=Secret.fromString("{{ hostvars['localhost'].SMTP_PASSWORD.stdout }}")
+          instance.save()
+
+    - name: Configure Octoperf plugin
+      community.general.jenkins_script:
+        user: admin
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        script: |
+          import org.jenkinsci.plugins.octoperf.*
+          import com.cloudbees.plugins.credentials.*
+          import com.cloudbees.plugins.credentials.domains.*
+          def octo_account = new OctoperfCredentialImpl(CredentialsScope.GLOBAL, "Octo Perf Creds", "Octo Perf Creds Description", "{{ hostvars['localhost'].OCTOPERF_USERNAME.stdout }}", "{{ hostvars['localhost'].OCTOPERF_PASSWORD.stdout }}");
+          SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), octo_account)
+
+    - name: Add cloud for docker
+      community.general.jenkins_script:
+        user: admin
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        script: |
+          import jenkins.*
+          import com.nirima.jenkins.plugins.docker.*
+          import io.jenkins.docker.client.*
+          import org.jenkinsci.plugins.docker.commons.credentials.*
+          def instance = Jenkins.getInstance()
+          def new_uri = new DockerServerEndpoint("unix:///var/run/docker.sock", "")
+          def new_docker_api = new DockerAPI(new_uri)
+          def empty_list = []
+          def new_cloud = new DockerCloud("docker", new_docker_api, empty_list)
+          instance.clouds.add(new_cloud)
+          instance.save()

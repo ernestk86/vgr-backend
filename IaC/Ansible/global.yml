@@ -3,3 +3,5 @@
   - import_playbook: setup.yml
   - import_playbook: install_jenkins.yml
   - import_playbook: jenkins_plugins.yml
+  - import_playbook: jenkins_config.yml
+  - import_playbook: jenkins_job.yml

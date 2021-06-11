@@ -8,7 +8,7 @@
     - name: Create a jenkins job using basic authentication
       community.general.jenkins_job:
         config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend CICD/config.xml') }}"
-        name: Test Job
-        password: "{{init_password.stdout}}"
-        url: "{{ lookup('file', '/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/iac/ansible/new_dns') }}"
+        name: vgr-backend CICD
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        url: "{{ hostvars['localhost'].DNS.stdout }}"
         user: admin

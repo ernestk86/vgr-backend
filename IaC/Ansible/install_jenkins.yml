@@ -4,45 +4,45 @@
   gather_facts: false
   become: true
   tasks:
-    # - name: Install Java 8
-    #   yum:
-    #     name:
-    #       - wget
-    #       - java-1.8.0-openjdk
+    - name: Install Java 8
+      yum:
+        name:
+          - wget
+          - java-1.8.0-openjdk
  
-    # - name: Download Jenkins Repo
-    #   get_url:
-    #     url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
-    #     dest: /etc/yum.repos.d/jenkins.repo
+    - name: Download Jenkins Repo
+      get_url:
+        url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
  
-    # - name: Import Jenkins Key
-    #   rpm_key:
-    #     state: present
-    #     key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    - name: Import Jenkins Key
+      rpm_key:
+        state: present
+        key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
  
-    # - name: Install Jenkins
-    #   yum:
-    #     name: jenkins
-    #     state: present
+    - name: Install Jenkins
+      yum:
+        name: jenkins
+        state: present
+
+    - name: Disable CSRF
+      command: 
+        cmd: sudo bash -c "echo \'JAVA_ARGS=\"$JAVA_ARGS -Dhudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID=true\"\' >> /etc/sysconfig/jenkins"
  
-    # - name: Start & Enable Jenkins
-    #   systemd:
-    #     name: jenkins
-    #     state: started
-    #     enabled: true
+    - name: Start & Enable Jenkins
+      systemd:
+        name: jenkins
+        state: started
+        enabled: true
  
-    # - name: Sleep for 60 seconds and continue with play
-    #   wait_for: timeout=60
+    - name: Sleep for 30 seconds and continue with play
+      wait_for: timeout=30
  
     - name: Get init password Jenkins
       shell: cat /var/lib/jenkins/secrets/initialAdminPassword
       changed_when: false
-      register: init_password
+      register: ADMIN_PASSWORD
  
     - name: Print init password Jenkins
       debug:
-        var: init_password.stdout
-
-    # - name: Disable CSRF
-    #   command: 
-    #     cmd: sudo bash -c "echo 'JAVA_ARGS="$JAVA_ARGS -Dhudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID=true"' >> /etc/sysconfig/jenkins"
+        var: ADMIN_PASSWORD.stdout
