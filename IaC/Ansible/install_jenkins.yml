@@ -9,6 +9,7 @@
         name:
           - wget
           - java-1.8.0-openjdk
+          - java-devel
  
     - name: Download Jenkins Repo
       get_url:

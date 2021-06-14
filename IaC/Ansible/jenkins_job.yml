@@ -1,14 +1,46 @@
 ---
-- name: Create Jenkins Job
+- name: Create Jenkins Jobs
   hosts: vgrbackend
   gather_facts: false
   become: true
   tasks:
     
-    - name: Create a jenkins job using basic authentication
+    - name: vgr-backend CICD
       community.general.jenkins_job:
         config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend CICD/config.xml') }}"
         name: vgr-backend CICD
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        url: "{{ hostvars['localhost'].DNS.stdout }}"
+        user: admin
+    
+    - name: vgr-backend Sonar Check
+      community.general.jenkins_job:
+        config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend Sonar Check/config.xml') }}"
+        name: vgr-backend Sonar Check
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        url: "{{ hostvars['localhost'].DNS.stdout }}"
+        user: admin
+
+    - name: vgr-backend Canary
+      community.general.jenkins_job:
+        config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend Canary/config.xml') }}"
+        name: vgr-backend Canary
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        url: "{{ hostvars['localhost'].DNS.stdout }}"
+        user: admin
+
+    - name: vgr-backend Load Test
+      community.general.jenkins_job:
+        config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend Load Test/config.xml') }}"
+        name: vgr-backend Load Test
+        password: "{{ADMIN_PASSWORD.stdout}}"
+        url: "{{ hostvars['localhost'].DNS.stdout }}"
+        user: admin
+
+    - name: vgr-backend Production Deploy and Health Check
+      community.general.jenkins_job:
+        config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend Production Deploy and Health Check/config.xml') }}"
+        name: vgr-backend Production Deploy and Health Check
         password: "{{ADMIN_PASSWORD.stdout}}"
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         user: admin

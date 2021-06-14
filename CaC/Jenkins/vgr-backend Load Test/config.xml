@@ -23,7 +23,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <org.jenkinsci.plugins.octoperf.OctoperfBuilder plugin="octoperf@4.3.1">
-      <credentialsId>Octoperf</credentialsId>
+      <credentialsId>Octo Perf Creds</credentialsId>
       <workspaceId>2t2ms3kBtsj8ySy3ddDQ</workspaceId>
       <projectId>od2ms3kBtsj8ySy3rNE_</projectId>
       <scenarioId>ucWps3kBrOqt3Q0WAa7V</scenarioId>

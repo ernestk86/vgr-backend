@@ -13,53 +13,53 @@
         name: git
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install github
       community.general.jenkins_plugin:
         name: github
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install octoperf
       community.general.jenkins_plugin:
         name: octoperf
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install generic webhook trigger
       community.general.jenkins_plugin:
         name: generic-webhook-trigger
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install docker plugin for Jenkins
       community.general.jenkins_plugin:
         name: docker-plugin
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install email-extension
       community.general.jenkins_plugin:
         name: email-ext
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install performance report
       community.general.jenkins_plugin:
         name: performance
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"
+        url_password: "{{ADMIN_PASSWORD.stdout}}"
 
     - name: Install pipeline
       community.general.jenkins_plugin:
         name: workflow-aggregator
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{init_password.stdout}}"                
+        url_password: "{{ADMIN_PASSWORD.stdout}}"                
