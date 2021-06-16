@@ -1,0 +1,20 @@
+---
+- name: Grab variables
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Grab DNS
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/new_dns
+      changed_when: false
+      register: DNS
+
+# - name: Grab Jenkins admin password
+#   hosts: vgrbackend
+#   gather_facts: false
+#   become: true
+#   tasks:
+#     - name: Get init password Jenkins
+#       shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+#       changed_when: false
+#       register: ADMIN_PASSWORD

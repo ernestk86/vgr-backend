@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>curl --request PUT \
-  --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \
+  --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \
   --header &quot;content-type: application/json&quot; \
   --header &quot;Authorization: Bearer $K8_ACCESS_TOKEN&quot; \
   --insecure \

@@ -5,10 +5,16 @@ terraform {
       name = "vgr-backend"
     }
   }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 3.27"
+    }
+
+    google = {
+      source  = "hashicorp/google"
+      version = "3.71.0"
     }
   }
 
@@ -18,6 +24,36 @@ terraform {
 provider "aws" {
   profile = "default"
   region  = "us-east-2"
+}
+
+provider "google" {
+  credentials = file("/home/erniek86/terraform/vgr-backend-a54795b62091.json")
+  project     = "vgr-backend"
+  region      = "us-east4"
+  zone        = "us-east4-c"
+}
+
+resource "google_container_cluster" "kubernetesCluster" {
+  name                     = "vgr-backend-production"
+  location                 = "us-east4-c"
+  remove_default_node_pool = true
+  initial_node_count       = 1
+}
+
+resource "google_container_node_pool" "nodes" {
+  name       = "vgr-backend-nodepool"
+  location   = "us-east4-c"
+  cluster    = google_container_cluster.kubernetesCluster.name
+  node_count = 3
+
+  node_config {
+    preemptible  = true
+    machine_type = "g1-small"
+
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+  }
 }
 
 /* resource "aws_db_instance" "database" {

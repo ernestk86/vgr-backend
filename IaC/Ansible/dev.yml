@@ -1,6 +1,0 @@
----
-# Combine multiple playbook
-  - import_playbook: setup_dev.yml
-  # - import_playbook: jenkins_config.yml
-  # - import_playbook: jenkins_job.yml
-  - import_playbook: jenkins_dev.yml

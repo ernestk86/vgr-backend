@@ -1,6 +1,4 @@
 ---
-
-
 - name: Configure Jenkins
   hosts: vgrbackend
   gather_facts: false
@@ -29,6 +27,9 @@
           envVars.put("DOCKERHUB_USERNAME", "{{ hostvars['localhost'].DOCKERHUB_USERNAME.stdout }}")
           envVars.put("DOCKERHUB_PASSWORD", "{{ hostvars['localhost'].DOCKERHUB_PASSWORD.stdout }}")
           envVars.put("GITHUB_ACCESS_TOKEN", "{{ hostvars['localhost'].GITHUB_ACCESS_TOKEN.stdout }}")
+          envVars.put("CLUSTER_ENDPOINT", "{{ hostvars['localhost'].CLUSTER_ENDPOINT.stdout }}")
+          envVars.put("K8_ACCESS_TOKEN", "{{ hostvars['localhost'].K8_ACCESS_TOKEN.stdout }}")
+          envVars.put("CLUSTER_ENDPOINT", "{{ hostvars['localhost'].CLUSTER_ENDPOINT.stdout }}")
           instance.save()
 
     - name: Configure Email plugin

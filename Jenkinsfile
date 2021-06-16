@@ -5,7 +5,7 @@ pipeline {
         
         stage('Scale down Canary') {
             steps {
-                sh '''curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \\
+                sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
                     --insecure \\
@@ -123,7 +123,7 @@ pipeline {
 
         stage('Rollout new image to Production') {
             steps {
-                sh '''curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
+                sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
                     --insecure \\
@@ -226,7 +226,7 @@ pipeline {
                                     }
                                 }
                             }\''''
-                sh '''curl --request PUT --url https://104.196.197.252/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
+                sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
                     --insecure \\
@@ -335,7 +335,7 @@ pipeline {
         stage('Health Check') {
             steps {
                 sh 'sleep 10'
-                sh 'result=$(curl --request POST --url http://34.74.246.76/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\')'
+                sh 'result=$(curl --request POST --url http://$NGINX_ENDPOINT/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\')'
                 sh 'grep admin | echo $result'
                 sh 'exit $?'
             }

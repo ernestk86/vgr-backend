@@ -1,0 +1,148 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+
+  collections:
+    - kubernetes.core
+
+  tasks:
+    # - name: Create Prometheus Rules
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus-rules.yml
+
+    # - name: Add Prometheus-Community repository
+    #   kubernetes.core.helm_repository:
+    #     name: prometheus-community
+    #     repo_url: https://prometheus-community.github.io/helm-charts
+
+    # - name: Deploy latest version of Alertmanager chart with values
+    #   kubernetes.core.helm:
+    #     name: alertmanager
+    #     chart_ref: prometheus-community/alertmanager
+    #     release_namespace: default
+    #     update_repo_cache: true
+    #     values_files:
+    #       - /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/alertsmanager-values.yml
+    
+    # - name: Pause for 1 minute to allow Alertmanager to start up
+    #   pause:
+    #     minutes: 1
+    #     prompt: "Next step is to create Alertmanager ingress, needs to make sure Alertmanager service is started up or else runs into error."
+    
+    # - name: Create Alertmanager ingress
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/alertsmanager-ingress.yml
+
+    # - name: Get Prometheus service object
+    #   kubernetes.core.k8s_info:
+    #     kind: Service
+    #     name: prometheus
+    #     namespace: default
+    #   register: PROM_SVC
+
+    # - name: Grab Grafana Credentials Username
+    #   shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/gu
+    #   changed_when: false
+    #   register: GRAFANA_USER
+
+    # - name: Grab Grafana Credentials Username
+    #   shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/gp
+    #   changed_when: false
+    #   register: GRAFANA_PASSWORD
+
+    # - name: Get an existing Service object
+    #   kubernetes.core.k8s_info:
+    #     kind: Service
+    #     name: ingress-nginx-controller
+    #     namespace: default
+    #   register: NGINX
+
+    # - name: Grab Grafana Loki Password
+    #   shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/log
+    #   changed_when: false
+    #   register: LOKI_PASSWORD      
+
+    # - name: Set Grafana Data Source
+    #   community.grafana.grafana_datasource:
+    #     ds_type: "loki"
+    #     ds_url: "https://logs-prod-us-central1.grafana.net"
+    #     name: "grafanacloud-ernestk86-logs"
+    #     basic_auth_user: "58910"
+    #     basic_auth_password: "{{LOKI_PASSWORD.stdout}}"
+    #     url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
+    #     url_username: "{{GRAFANA_USER.stdout}}"
+    #     url_password: "{{GRAFANA_PASSWORD.stdout}}"
+
+    # - name: Add Dashboard to Grafana
+    #   community.grafana.grafana_dashboard:
+    #     grafana_url: http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana
+    #     url_username: "{{GRAFANA_USER.stdout}}"
+    #     url_password: "{{GRAFANA_PASSWORD.stdout}}"
+    #     path: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/vgr-backend_dashboard.json
+    #     state: present
+
+    # - name: Get Grafana ingress object
+    #   kubernetes.core.k8s_info:
+    #     kind: Ingress
+    #     name: grafana-ingress
+    #     namespace: default
+    #   register: GRAFANA_ING
+
+    # - name: Workspace
+    #   debug:
+    #     var: GRAFANA_ING.resources[0].status.ports[0].port
+
+
+
+    # - name: Create production deployment
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/vgr-backend_prod_deploy.yml
+    
+    # - name: Create production service
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/vgr-backend_prod_svc.yml
+
+    # - name: Download Prometheus Operator deployment manifest
+    #   ansible.builtin.get_url:
+    #     url: https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/master/bundle.yaml
+    #     dest: ~/bundle.yaml
+    #     mode: '0664'
+
+    # - name: Configure Prometheus RBAC Permissions
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prom_rbac.yml
+
+    # - name: Deploy Prometheus
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus.yml
+
+    # - name: Prometheus Service
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prom_svc.yml
+
+    # - name: Deploy Prometheus Service Monitor
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus_servicemonitor.yml
+    
+    # - name: Create vgr-backend secret
+    #   kubernetes.core.k8s:
+    #     namespace: default
+    #     state: present
+    #     src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/vgr-backend-creds.yml

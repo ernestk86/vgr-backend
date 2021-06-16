@@ -3,14 +3,7 @@
   hosts: vgrbackend
   gather_facts: false
   become: true
-  tasks:
-    - name: Install Java 8
-      yum:
-        name:
-          - wget
-          - java-1.8.0-openjdk
-          - java-devel
- 
+  tasks: 
     - name: Download Jenkins Repo
       get_url:
         url: https://pkg.jenkins.io/redhat-stable/jenkins.repo

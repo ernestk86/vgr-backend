@@ -1,0 +1,6 @@
+- name: Set NGINX endpoint for Jenkins
+  hosts: vgrbackend
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Add NGINX variable

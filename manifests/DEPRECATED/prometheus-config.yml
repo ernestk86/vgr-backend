@@ -1,0 +1,210 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: default
+data:
+  global:
+    scrape_interval: 31s
+    scrape_timeout: 10s
+    evaluation_interval: 30s
+    external_labels:
+      prometheus: default/prometheus
+      prometheus_replica: prometheus-prometheus-0
+  alerting:
+    alert_relabel_configs:
+    - separator: ;
+      regex: prometheus_replica
+      replacement: $1
+      action: labeldrop
+  rule_files:
+  - /etc/prometheus/rules/prometheus-prometheus-rulefiles-0/*.yaml
+  scrape_configs:
+  - job_name: serviceMonitor/default/prometheus-self/0
+    honor_timestamps: true
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http
+    relabel_configs:
+    - source_labels: [job]
+      separator: ;
+      regex: (.*)
+      target_label: __tmp_prometheus_job_name
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_label_app]
+      separator: ;
+      regex: prometheus
+      replacement: $1
+      action: keep
+    - source_labels: [__meta_kubernetes_endpoint_port_name]
+      separator: ;
+      regex: web
+      replacement: $1
+      action: keep
+    - source_labels: [__meta_kubernetes_endpoint_address_target_kind, __meta_kubernetes_endpoint_address_target_name]
+      separator: ;
+      regex: Node;(.*)
+      target_label: node
+      replacement: ${1}
+      action: replace
+    - source_labels: [__meta_kubernetes_endpoint_address_target_kind, __meta_kubernetes_endpoint_address_target_name]
+      separator: ;
+      regex: Pod;(.*)
+      target_label: pod
+      replacement: ${1}
+      action: replace
+    - source_labels: [__meta_kubernetes_namespace]
+      separator: ;
+      regex: (.*)
+      target_label: namespace
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_name]
+      separator: ;
+      regex: (.*)
+      target_label: service
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_pod_name]
+      separator: ;
+      regex: (.*)
+      target_label: pod
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_pod_container_name]
+      separator: ;
+      regex: (.*)
+      target_label: container
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_name]
+      separator: ;
+      regex: (.*)
+      target_label: job
+      replacement: ${1}
+      action: replace
+    - separator: ;
+      regex: (.*)
+      target_label: endpoint
+      replacement: web
+      action: replace
+    - source_labels: [__address__]
+      separator: ;
+      regex: (.*)
+      modulus: 1
+      target_label: __tmp_hash
+      replacement: $1
+      action: hashmod
+    - source_labels: [__tmp_hash]
+      separator: ;
+      regex: "0"
+      replacement: $1
+      action: keep
+    kubernetes_sd_configs:
+    - role: endpoints
+      namespaces:
+        names:
+        - default
+  - job_name: serviceMonitor/default/prometheus-vgr-backend/0
+    honor_timestamps: true
+    scrape_interval: 10s
+    scrape_timeout: 10s
+    metrics_path: /actuator/prometheus
+    scheme: http
+    relabel_configs:
+    - source_labels: [job]
+      separator: ;
+      regex: (.*)
+      target_label: __tmp_prometheus_job_name
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_label_app]
+      separator: ;
+      regex: vgr-backend
+      replacement: $1
+      action: keep
+    - source_labels: [__meta_kubernetes_endpoint_port_name]
+      separator: ;
+      regex: http
+      replacement: $1
+      action: keep
+    - source_labels: [__meta_kubernetes_endpoint_address_target_kind, __meta_kubernetes_endpoint_address_target_name]
+      separator: ;
+      regex: Node;(.*)
+      target_label: node
+      replacement: ${1}
+      action: replace
+    - source_labels: [__meta_kubernetes_endpoint_address_target_kind, __meta_kubernetes_endpoint_address_target_name]
+      separator: ;
+      regex: Pod;(.*)
+      target_label: pod
+      replacement: ${1}
+      action: replace
+    - source_labels: [__meta_kubernetes_namespace]
+      separator: ;
+      regex: (.*)
+      target_label: namespace
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_name]
+      separator: ;
+      regex: (.*)
+      target_label: service
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_pod_name]
+      separator: ;
+      regex: (.*)
+      target_label: pod
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_pod_container_name]
+      separator: ;
+      regex: (.*)
+      target_label: container
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_service_name]
+      separator: ;
+      regex: (.*)
+      target_label: job
+      replacement: ${1}
+      action: replace
+    - separator: ;
+      regex: (.*)
+      target_label: endpoint
+      replacement: http
+      action: replace
+    - source_labels: [__address__]
+      separator: ;
+      regex: (.*)
+      modulus: 1
+      target_label: __tmp_hash
+      replacement: $1
+      action: hashmod
+    - source_labels: [__tmp_hash]
+      separator: ;
+      regex: "0"
+      replacement: $1
+      action: keep
+    kubernetes_sd_configs:
+    - role: endpoints
+      namespaces:
+        names:
+        - default
+  remote_write:
+  - url: https://prometheus-us-central1.grafana.net/api/prom/push
+    remote_timeout: 30s
+    basic_auth:
+      username: "119875"
+      password: <secret>
+    queue_config:
+      capacity: 2500
+      max_shards: 200
+      min_shards: 1
+      max_samples_per_send: 500
+      batch_send_deadline: 5s
+      min_backoff: 30ms
+      max_backoff: 100ms

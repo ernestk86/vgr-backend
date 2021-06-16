@@ -4,7 +4,6 @@
   gather_facts: false
   become: true
   tasks:
-    
     - name: vgr-backend CICD
       community.general.jenkins_job:
         config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend CICD/config.xml') }}"

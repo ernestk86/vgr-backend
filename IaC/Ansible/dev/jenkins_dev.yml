@@ -1,0 +1,97 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+
+  collections:
+    - kubernetes.core
+
+  tasks:
+    # - name: Add Nginx repository
+    #   kubernetes.core.helm_repository:
+    #     name: ingress-nginx
+    #     repo_url: https://kubernetes.github.io/ingress-nginx
+
+    # - name: Deploy latest version of Nginx chart
+    #   kubernetes.core.helm:
+    #     name: ingress-nginx
+    #     chart_ref: ingress-nginx/ingress-nginx
+    #     release_namespace: default
+    #     update_repo_cache: true
+    #     values:
+    #       replicas: 1
+
+    # - name: Get an existing Service object
+    #   kubernetes.core.k8s_info:
+    #     kind: Service
+    #     name: ingress-nginx-controller
+    #     namespace: default
+    #   register: NGINX
+
+    # - name: Check service
+    #   debug:
+    #     var: NGINX.resources[0].status.loadBalancer.ingress[0].ip
+
+    # - name: Add Grafana repository
+    #   kubernetes.core.helm_repository:
+    #     name: grafana
+    #     repo_url: https://grafana.github.io/helm-charts
+    
+    # - name: Deploy latest version of Grafana chart inside monitoring namespace with values
+    #   kubernetes.core.helm:
+    #     name: grafana
+    #     chart_ref: grafana/grafana
+    #     release_namespace: default
+    #     update_repo_cache: true
+    #     values:
+    #       replicas: 1
+
+    # - name: Create a Deployment by reading the definition from a local file
+    #   kubernetes.core.k8s:
+    #     state: present
+    #     src: /testing/deployment.yml
+
+# - name: Grab Variables
+#   hosts: localhost
+#   gather_facts: false
+#   become: true
+#   tasks:
+
+# - name: Developing
+#   hosts: vgrbackend
+#   gather_facts: false
+#   become: true
+#   tasks:
+#     - name: Set env variables
+#       community.general.jenkins_script:
+#         user: admin
+#         password: "{{ADMIN_PASSWORD.stdout}}"
+#         script: |
+#           import jenkins.*
+#           import jenkins.model.*
+#           import hudson.*
+#           import hudson.model.*
+#           instance = Jenkins.getInstance()
+#           globalNodeProperties = instance.getGlobalNodeProperties()
+#           envVarsNodePropertyList = globalNodeProperties.getAll(hudson.slaves.EnvironmentVariablesNodeProperty.class)
+#           envVars = envVarsNodePropertyList.get(0).getEnvVars()  
+#           envVars.put("NGINX_ENDPOINT", "{{ hostvars['localhost'].NGINX.resources[0].status.loadBalancer.ingress[0].ip }}")
+#           instance.save()
+
+#     - name: vgr-backend Load Test
+#       community.general.jenkins_job:
+#         config: "{{ lookup('file', '/home/erniek86/jenkins/vgr-backend Load Test/config.xml') }}"
+#         name: vgr-backend Load Test
+#         password: "{{ADMIN_PASSWORD.stdout}}"
+#         url: "{{ hostvars['localhost'].DNS.stdout }}"
+#         user: admin
+
+    # - name: Restart Jenkins
+    #   systemd:
+    #     name: jenkins
+    #     state: restarted
+    #     enabled: true
+    
+    # - name: Delete old git tool path
+    #   command:
+    #     cmd: sudo rm /var/lib/jenkins/hudson.plugins.git.GitTool.xml

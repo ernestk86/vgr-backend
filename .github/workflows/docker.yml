@@ -39,4 +39,4 @@ jobs:
     steps:
       - name: Hand off to Jenkins
         run: |
-          curl -X POST http://${{ secrets.JENKINS_USERNAME }}:${{ secrets.JENKINS_TOKEN }}@ec2-3-133-100-143.us-east-2.compute.amazonaws.com:9090/job/vgr-backend%20Canary/build?token=canary
+          curl -X POST http://${{ secrets.JENKINS_USERNAME }}:${{ secrets.JENKINS_TOKEN }}@${{ secrets.NEW_DNS }}:8080/job/vgr-backend%20Canary/build?token=canary

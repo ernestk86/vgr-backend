@@ -22,3 +22,8 @@ output "database_username" {
   description = "Username of database"
   value = aws_db_instance.database.username
 } */
+
+output "cluster_endpoint" {
+  description = "Endpoint ip address for master node of cluster"
+  value       = google_container_cluster.kubernetesCluster.endpoint
+}
