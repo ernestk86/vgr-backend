@@ -6,3 +6,4 @@
   - import_playbook: jenkins_config.yml
   - import_playbook: jenkins_job.yml
   - import_playbook: cluster_setup.yml
+  - import_playbook: export_password.yml
