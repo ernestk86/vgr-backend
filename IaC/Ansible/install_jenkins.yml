@@ -21,8 +21,10 @@
 
     - name: Disable CSRF
       command: 
-        cmd: sudo bash -c "echo \'JAVA_ARGS=\"$JAVA_ARGS -Dhudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID=true\"\' >> /etc/sysconfig/jenkins"
- 
+        cmd: |
+          sudo bash -c "echo JAVA_ARGS=\"$JAVA_ARGS -Dhudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID=true\" >> /etc/sysconfig/jenkins"
+          sed -i 'N;$!P;D' /etc/sysconfig/jenkins
+
     - name: Start & Enable Jenkins
       systemd:
         name: jenkins

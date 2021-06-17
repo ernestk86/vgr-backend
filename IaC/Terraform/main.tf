@@ -56,7 +56,7 @@ resource "google_container_node_pool" "nodes" {
   }
 }
 
-/* resource "aws_db_instance" "database" {
+resource "aws_db_instance" "database" {
   allocated_storage = 10
   max_allocated_storage = 20
   engine = "postgres"
@@ -67,7 +67,7 @@ resource "google_container_node_pool" "nodes" {
   password = var.db_password
   skip_final_snapshot = true
   vpc_security_group_ids = tolist(["sg-0825b33512368dbe5"])
-} */
+}
 
 resource "aws_instance" "jenkinsServer" {
   ami           = "ami-077e31c4939f6a2f3"

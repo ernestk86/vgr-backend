@@ -62,4 +62,14 @@
         name: workflow-aggregator
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
-        url_password: "{{ADMIN_PASSWORD.stdout}}"                
+        url_password: "{{ADMIN_PASSWORD.stdout}}"      
+    
+    - name: Restart Jenkins
+      systemd:
+        name: jenkins
+        state: restarted
+        enabled: true
+
+    - name: Pause a minute so that Jenkins can restart
+      pause:
+        minutes: 1

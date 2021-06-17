@@ -7,6 +7,15 @@
     - kubernetes.core
 
   tasks:
+    - name: Set Prometheus Data Source
+      community.grafana.grafana_datasource:
+        ds_type: "prometheus"
+        ds_url: "{{PROM_SVC.resources[0].spec.clusterIP}}:9090"
+        name: "Prometheus"
+        url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
+        url_username: "{{GRAFANA_USER.stdout}}"
+        url_password: "{{GRAFANA_PASSWORD.stdout}}"   
+        
     # - name: Create Prometheus Rules
     #   kubernetes.core.k8s:
     #     namespace: default

@@ -2,12 +2,83 @@
 - name: Grab variables
   hosts: localhost
   gather_facts: false
-  become: true
+  connection: local
+  collections:
+    - kubernetes.core
   tasks:
-    - name: Grab DNS
-      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/new_dns
+    - name: Get Prometheus service object
+      kubernetes.core.k8s_info:
+        kind: Service
+        name: prometheus
+        namespace: default
+      register: PROM_SVC
+
+    - name: Get an existing Service object
+      kubernetes.core.k8s_info:
+        kind: Service
+        name: ingress-nginx-controller
+        namespace: default
+      register: NGINX
+
+    - name: Grab Grafana Credentials Username
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/gu
       changed_when: false
-      register: DNS
+      register: GRAFANA_USER
+
+    - name: Grab Grafana Credentials Password
+      shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/gp
+      changed_when: false
+      register: GRAFANA_PASSWORD
+
+#     - name: Grab Octoperf Username
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/opuser
+#       changed_when: false
+#       register: OCTOPERF_USERNAME
+
+#     - name: Grab smtp Password
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/smtpPass
+#       changed_when: false
+#       register: SMTP_PASSWORD
+
+#     - name: Grab Octoperf Password
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/oppass
+#       changed_when: false
+#       register: OCTOPERF_PASSWORD
+
+#     - name: Grab docker config
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/org.jenkinsci.plugins.docker.commons.tools.DockerTool.xml
+#       changed_when: false
+#       register: DOCKER_TOOL_CONFIG
+
+#     - name: Grab Cluster Endpoint
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/ce
+#       changed_when: false
+#       register: CLUSTER_ENDPOINT
+
+#     - name: Grab Github Token
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/ght
+#       changed_when: false
+#       register: GITHUB_ACCESS_TOKEN
+
+#     - name: Grab Dockerhub Username
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/dhuser
+#       changed_when: false
+#       register: DOCKERHUB_USERNAME
+    
+#     - name: Grab Dockerhub Password
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/dhpass
+#       changed_when: false
+#       register: DOCKERHUB_PASSWORD
+
+#     - name: Grab K8 Token
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/k8token
+#       changed_when: false
+#       register: K8_ACCESS_TOKEN
+
+#     - name: Grab DNS
+#       shell: cat /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/new_dns
+#       changed_when: false
+#       register: DNS
 
 # - name: Grab Jenkins admin password
 #   hosts: vgrbackend

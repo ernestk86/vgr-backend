@@ -137,6 +137,10 @@
         namespace: default
       register: PROM_SVC
 
+    - name: Pause a minute so that K8 objects can start
+      pause:
+        minutes: 1
+
     - name: Set Prometheus Data Source
       community.grafana.grafana_datasource:
         ds_type: "prometheus"

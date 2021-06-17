@@ -1,5 +1,4 @@
 ---
 # Combine multiple playbook
-#  - import_playbook: setup_dev.yml
-  #- import_playbook: jenkins_dev.yml
+  - import_playbook: setup_dev.yml
   - import_playbook: k8_dev.yml

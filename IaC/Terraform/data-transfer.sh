@@ -31,14 +31,16 @@ curl -u $sonar_token -d "url=http://$new_dns/generic-webhook-trigger/invoke?toke
 
 gcloud container clusters get-credentials vgr-backend-production --zone us-east4-c
 
+sudo rm $cluster_endpoint_path
 new_cluster_endpoint=$(terraform output -raw cluster_endpoint)
-echo $new_cluster_endpoint >> $cluster_endpoint_path
+echo -n $new_cluster_endpoint >> $cluster_endpoint_path
 
 db_prefix="%-2sDB_URL:%-1s"
 db_endpoint="jdbc:postgresql://$(terraform output -raw database_endpoint):$(terraform output -raw database_port)/vgrbackend"
 printf $db_prefix >> $vgr_backend_creds_path
-echo -e -n $db_endpoint | base64 >> $vgr_backend_creds_path
+echo -e -n $db_endpoint | base64 -w 0 >> $vgr_backend_creds_path
 sed -i 'N;$!P;D' $vgr_backend_creds_path
+printf '\n' >> $vgr_backend_creds_path
 
 log_path=/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/log
 log=$(<$log_path)
@@ -46,12 +48,14 @@ promtail_url=https://raw.githubusercontent.com/grafana/loki/master/tools/promtai
 curl -fsS $promtail_url | sh -s 58910 $log logs-prod-us-central1.grafana.net default | kubectl apply --namespace=default -f  -
 
 public_id_path=/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/pki
+sudo rm $public_id_path
 curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/public-key | jq -r '.key_id' >> $public_id_path
 public_id=$(<$public_id_path)
 
 public_key_path=/mnt/c/users/ernes/desktop/ernie_work/vgr-backend/forbidden/pk
+sudo rm $public_key_path
 curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/public-key | jq -r '.key' >> $public_key_path
 public_key=$(<$public_key_path)
 
 encrypted_value=$(python3 encrypt_sodium.py $public_key $new_dns)
-curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/NEW_DNS -d "{\"encrypted_value\":\"$encrypted_value\", \"key_id\":\"$public_id\"}"
+curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/NEW_DNS -d '{"encrypted_value":"$encrypted_value", "key_id":"$public_id"}'
