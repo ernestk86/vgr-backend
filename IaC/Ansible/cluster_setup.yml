@@ -129,6 +129,10 @@
         namespace: default
         state: present
         src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus_servicemonitor.yml
+
+    - name: Pause a minute so that K8 objects can start
+      pause:
+        minutes: 1
     
     - name: Get Prometheus service object
       kubernetes.core.k8s_info:
@@ -136,10 +140,6 @@
         name: prometheus
         namespace: default
       register: PROM_SVC
-
-    - name: Pause a minute so that K8 objects can start
-      pause:
-        minutes: 1
 
     - name: Set Prometheus Data Source
       community.grafana.grafana_datasource:

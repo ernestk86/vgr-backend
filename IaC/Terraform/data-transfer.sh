@@ -58,4 +58,4 @@ curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $gith
 public_key=$(<$public_key_path)
 
 encrypted_value=$(python3 encrypt_sodium.py $public_key $new_dns)
-curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/NEW_DNS -d '{"encrypted_value":"$encrypted_value", "key_id":"$public_id"}'
+curl -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer $github_token" https://api.github.com/repos/ernestk86/vgr-backend/actions/secrets/NEW_DNS -d '{"encrypted_value":"'$encrypted_value'", "key_id":"'$public_id'"}'

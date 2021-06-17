@@ -3,4 +3,4 @@ ansible_user=ec2-user
 ansible_ssh_private_key_file=/home/erniek86/.ssh/access.pem
 
 [vgrbackend]
-3.140.251.143
+18.118.158.224
