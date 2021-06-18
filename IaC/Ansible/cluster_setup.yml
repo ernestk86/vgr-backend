@@ -26,13 +26,6 @@
         values:
           replicas: 1
 
-    - name: Get an existing Service object
-      kubernetes.core.k8s_info:
-        kind: Service
-        name: ingress-nginx-controller
-        namespace: default
-      register: NGINX
-
     - name: Add Grafana repository
       kubernetes.core.helm_repository:
         name: grafana
@@ -47,9 +40,9 @@
         values_files:
           - /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/grafana-values.yml
     
-    - name: Pause for 1 minute to allow Grafana to start up
+    - name: Pause for 2 minute to allow Grafana to start up
       pause:
-        minutes: 1
+        minutes: 2
         prompt: "Next step is to create Grafana ingress, needs to make sure Grafana service is started up or else runs into error."
     
     - name: Create Grafana ingress
@@ -130,9 +123,9 @@
         state: present
         src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus_servicemonitor.yml
 
-    - name: Pause 2 minutes so that K8 objects can start
+    - name: Pause 3 minutes so that K8 objects can start
       pause:
-        minutes: 2
+        minutes: 3
     
     - name: Get Prometheus service object
       kubernetes.core.k8s_info:
@@ -140,34 +133,6 @@
         name: prometheus
         namespace: default
       register: PROM_SVC
-
-    - name: Set Prometheus Data Source
-      community.grafana.grafana_datasource:
-        ds_type: "prometheus"
-        ds_url: "{{PROM_SVC.resources[0].spec.clusterIP}}:9090"
-        name: "Prometheus"
-        url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
-        url_username: "{{GRAFANA_USER.stdout}}"
-        url_password: "{{GRAFANA_PASSWORD.stdout}}"    
-
-    - name: Set Loki Data Source
-      community.grafana.grafana_datasource:
-        ds_type: "loki"
-        ds_url: "https://logs-prod-us-central1.grafana.net"
-        name: "grafanacloud-ernestk86-logs"
-        basic_auth_user: "58910"
-        basic_auth_password: "{{LOKI_PASSWORD.stdout}}"
-        url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
-        url_username: "{{GRAFANA_USER.stdout}}"
-        url_password: "{{GRAFANA_PASSWORD.stdout}}"
-    
-    - name: Add Dashboard to Grafana
-      community.grafana.grafana_dashboard:
-        grafana_url: http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana
-        url_username: "{{GRAFANA_USER.stdout}}"
-        url_password: "{{GRAFANA_PASSWORD.stdout}}"
-        path: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/vgr-backend_dashboard.json
-        state: present
 
     - name: Add Prometheus-Community repository
       kubernetes.core.helm_repository:
@@ -183,9 +148,9 @@
         values_files:
           - /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/alertsmanager-values.yml
     
-    - name: Pause for 1 minute to allow Alertmanager to start up
+    - name: Pause for 2 minute to allow Alertmanager to start up
       pause:
-        minutes: 1
+        minutes: 2
         prompt: "Next step is to create Alertmanager ingress, needs to make sure Alertmanager service is started up or else runs into error."
     
     - name: Create Alertmanager ingress
@@ -198,7 +163,42 @@
       kubernetes.core.k8s:
         namespace: default
         state: present
-        src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus-rules.yml    
+        src: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/prometheus-rules.yml
+
+    - name: Get Nginx Service
+      kubernetes.core.k8s_info:
+        kind: Service
+        name: ingress-nginx-controller
+        namespace: default
+      register: NGINX
+
+    - name: Set Loki Data Source
+      community.grafana.grafana_datasource:
+        ds_type: "loki"
+        ds_url: "https://logs-prod-us-central1.grafana.net"
+        name: "grafanacloud-ernestk86-logs"
+        basic_auth_user: "58910"
+        basic_auth_password: "{{LOKI_PASSWORD.stdout}}"
+        url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
+        url_username: "{{GRAFANA_USER.stdout}}"
+        url_password: "{{GRAFANA_PASSWORD.stdout}}"
+    
+    - name: Set Prometheus Data Source
+      community.grafana.grafana_datasource:
+        ds_type: "prometheus"
+        ds_url: "{{PROM_SVC.resources[0].spec.clusterIP}}:9090"
+        name: "Prometheus"
+        url: "http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana"
+        url_username: "{{GRAFANA_USER.stdout}}"
+        url_password: "{{GRAFANA_PASSWORD.stdout}}"  
+    
+    - name: Add Dashboard to Grafana
+      community.grafana.grafana_dashboard:
+        grafana_url: http://{{ NGINX.resources[0].status.loadBalancer.ingress[0].ip }}/grafana
+        url_username: "{{GRAFANA_USER.stdout}}"
+        url_password: "{{GRAFANA_PASSWORD.stdout}}"
+        path: /mnt/c/users/ernes/desktop/ernie_work/vgr-backend/manifests/vgr-backend_dashboard.json
+        state: present
 
 - name: Set NGINX endpoint for Jenkins
   hosts: vgrbackend

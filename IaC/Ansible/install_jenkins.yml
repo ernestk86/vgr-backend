@@ -34,11 +34,11 @@
     - name: Sleep for 30 seconds and continue with play
       wait_for: timeout=30
  
-    - name: Get init password Jenkins
+    - name: Get admin password Jenkins
       shell: cat /var/lib/jenkins/secrets/initialAdminPassword
       changed_when: false
       register: ADMIN_PASSWORD
  
-    - name: Print init password Jenkins
+    - name: Print admin password Jenkins
       debug:
         var: ADMIN_PASSWORD.stdout

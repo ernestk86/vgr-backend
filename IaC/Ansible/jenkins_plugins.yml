@@ -4,32 +4,32 @@
   gather_facts: false
   become: true
   tasks:    
-    - name: Pause a minute
+    - name: Pause a minute to let Jenkins start
       pause:
         minutes: 1
 
-    - name: Install git
+    - name: Install git plugin
       community.general.jenkins_plugin:
         name: git
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install github
+    - name: Install github plugin
       community.general.jenkins_plugin:
         name: github
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install octoperf
+    - name: Install octoperf plugin
       community.general.jenkins_plugin:
         name: octoperf
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install generic webhook trigger
+    - name: Install generic webhook trigger plugin
       community.general.jenkins_plugin:
         name: generic-webhook-trigger
         url: "{{ hostvars['localhost'].DNS.stdout }}"
@@ -43,28 +43,28 @@
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install email-extension
+    - name: Install email-extension plugin
       community.general.jenkins_plugin:
         name: email-ext
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install performance report
+    - name: Install performance report plugin
       community.general.jenkins_plugin:
         name: performance
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"
 
-    - name: Install pipeline
+    - name: Install pipeline plugin
       community.general.jenkins_plugin:
         name: workflow-aggregator
         url: "{{ hostvars['localhost'].DNS.stdout }}"
         url_username: admin
         url_password: "{{ADMIN_PASSWORD.stdout}}"      
     
-    - name: Restart Jenkins
+    - name: Restart Jenkins so that plugins can integrate
       systemd:
         name: jenkins
         state: restarted

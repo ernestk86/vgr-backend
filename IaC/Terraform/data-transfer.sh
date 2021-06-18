@@ -36,7 +36,7 @@ new_cluster_endpoint=$(terraform output -raw cluster_endpoint)
 echo -n $new_cluster_endpoint >> $cluster_endpoint_path
 
 db_prefix="%-2sDB_URL:%-1s"
-db_endpoint="jdbc:postgresql://$(terraform output -raw database_endpoint):$(terraform output -raw database_port)/vgrbackend"
+db_endpoint="jdbc:postgresql://$(terraform output -raw database_endpoint)/vgrbackend"
 printf $db_prefix >> $vgr_backend_creds_path
 echo -e -n $db_endpoint | base64 -w 0 >> $vgr_backend_creds_path
 sed -i 'N;$!P;D' $vgr_backend_creds_path

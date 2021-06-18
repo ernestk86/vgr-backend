@@ -1,5 +1,5 @@
 ---
-- name: Grab Variables
+- name: Gathering credentials
   hosts: localhost
   gather_facts: false
   become: true
@@ -69,7 +69,7 @@
       changed_when: false
       register: LOKI_PASSWORD
 
-- name: Setup proper tools
+- name: Setup proper tools on EC2 for Jenkins
   hosts: vgrbackend
   gather_facts: false
   become: true
