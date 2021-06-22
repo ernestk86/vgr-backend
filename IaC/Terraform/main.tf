@@ -56,17 +56,23 @@ resource "google_container_node_pool" "nodes" {
   }
 }
 
+data "aws_db_snapshot" "db_snapshot" {
+    most_recent = true
+    db_instance_identifier = "us-east-2"
+}
+
 resource "aws_db_instance" "database" {
-  allocated_storage = 10
-  max_allocated_storage = 20
+  allocated_storage = 20
   engine = "postgres"
   engine_version = 12.5
   instance_class = "db.t2.micro"
-  name = "vgrbackend"
+  name = "VGLibrary"
   username = var.db_username
   password = var.db_password
   skip_final_snapshot = true
-  vpc_security_group_ids = tolist(["sg-0825b33512368dbe5"])
+  publicly_accessible = true
+  vpc_security_group_ids = tolist(["sg-0349ef4cf405e6d86"])
+  snapshot_identifier = "${data.aws_db_snapshot.db_snapshot.id}"
 }
 
 resource "aws_instance" "jenkinsServer" {
