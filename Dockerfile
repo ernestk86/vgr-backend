@@ -1,3 +1,4 @@
+# BUILD LAYER
 FROM maven:3.6.3-openjdk-8 as builder
 
 COPY mvnw mvnw
@@ -8,10 +9,13 @@ COPY src/ src/
 
 RUN mvn clean package
 
+# RUN LAYER
 FROM java:8 as runner
 
+# PORT
 EXPOSE 8880
 
+# ENVIRONMENT VARIABLES
 ENV DB_URL=$DB_URL
 ENV DB_USERNAME=$DB_USERNAME
 ENV DB_PASSWORD=$DB_PASSWORD

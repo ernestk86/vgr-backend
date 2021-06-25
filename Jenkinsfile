@@ -5,6 +5,7 @@ pipeline {
         
         stage('Scale down Canary') {
             steps {
+                // Send PUT request to cluster to update deployment
                 sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend-canary \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
@@ -114,6 +115,7 @@ pipeline {
 
         stage('Promote image to Production') {
             steps {
+                // Grab latest canary image, retag it to production, log into DockerHub, push tagged image to production
                 sh 'docker pull ernestk86/vgr-backend-canary:latest'
                 sh 'docker image tag ernestk86/vgr-backend-canary:latest ernestk86/vgr-backend:production'
                 sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
@@ -123,6 +125,7 @@ pipeline {
 
         stage('Rollout new image to Production') {
             steps {
+                // Send PUT request to scale down replicas in production deployment to 0
                 sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
@@ -226,6 +229,7 @@ pipeline {
                                     }
                                 }
                             }\''''
+                // Send PUT request to scale up replicas in production deployment back to 3
                 sh '''curl --request PUT --url https://$CLUSTER_ENDPOINT/apis/apps/v1/namespaces/default/deployments/vgr-backend \\
                     --header \'content-type: application/json\' \\
                     --header \"Authorization: Bearer $K8_ACCESS_TOKEN\" \\
@@ -334,6 +338,7 @@ pipeline {
         
         stage('Health Check') {
             steps {
+                // Allow cluster time to update, grab results of POST request and verify results
                 sh 'sleep 10'
                 sh 'result=$(curl --request POST --url http://$NGINX_ENDPOINT/vgr-backend/login  --header \'content-type: application/json\' --data \'{\"username\": \"admin\", \"password\": \"password\"}\')'
                 sh 'grep admin | echo $result'
